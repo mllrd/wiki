@@ -8,7 +8,6 @@
 ### Способы регистрации:
 
 * **Сайт** [Golos.id](https://golos.id) \(зеркало [golos.in](https://golos.in)\)
-* **Сайт** [Memestagram.io](https://memestagram.io/)
 * **Через ВК** - [vk.com/reg\_golos\_ru](https://vk.com/reg_golos_ru) 
 * **Страница на** [golos.cf](https://golos.cf/reg/)
 

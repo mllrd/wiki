@@ -51,6 +51,7 @@
 * [Установка ноды](witnesses/node/README.md)
   * [Гайд для witness/seed ноды](witnesses/node/guide.md)
   * [Настройка для API-ноды](witnesses/node/guide-api.md)
+  * [Настройка для бирж](witnesses/node/guide-exchange.md)
 * [Медианные параметры](witnesses/median-props.md)
 * [Скрипты для price feed](witnesses/price-feed.md)
 

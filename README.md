@@ -2,7 +2,7 @@
 
 [![](https://raw.githubusercontent.com/golos-blockchain/wiki/master/golos_logo.png)](https://golos.id/)
 
-Здесь точка сбора и распространения знаний по проекту **медиаблокчейн Голос**. Основной веб-клиент [golos.id](https://golos.id/) \(альтернативное зеркало [golos.in](https://golos.in/)\).
+Здесь точка сбора и распространения знаний по проекту **медиаблокчейн Голос**. Основной веб-клиент [golos.id](https://golos.id/) \(альтернативное зеркало [golos.in](https://golos.in/), а также [golos.today](https://golos.today/)\).
 
 Начните свое изучение Голоса с раздела для [Пользователей](users/welcome.md).
 

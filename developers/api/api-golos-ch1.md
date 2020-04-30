@@ -1,6 +1,6 @@
 # API part 1
 
-Автор: [@asuleymanov](https://golos.io/@asuleymanov)
+Автор: [@asuleymanov](https://golos.id/@asuleymanov)
 
 Представляю Вам первую часть моей публикации. В данную часть не вошли 18 из 72 \(раздела Database\_API\) найденных мною команд. Их я опишу позже.
 
@@ -344,7 +344,7 @@ _**get\_miner\_queue**_
 ## Использование`curl`
 
 Простой способ использовать команду - с помощью`curl`, используя следующий формат:  
-`curl --data '{"jsonrpc": "2.0", <Параметры>}' https://ws.golos.io`
+`curl --data '{"jsonrpc": "2.0", <Параметры>}' https://api-full.golos.id`
 
 Историческая справка
 

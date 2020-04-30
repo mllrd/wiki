@@ -16,5 +16,5 @@
 * Поиск недавних или всех операций строго содержащих все указанные ключевые слова
 * Поиск по множеству типов операций
 
-Более подробнее в посте автора - [https://golos.io/@vik/explorer-guide](https://golos.io/@vik/explorer-guide)
+Более подробнее в посте автора - [https://golos.id/@vik/explorer-guide](https://golos.id/@vik/explorer-guide)
 

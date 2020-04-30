@@ -8,7 +8,7 @@
 Бекап файла блоклогс:  
 [https://files.rudex.org/golos-classic/blockchain/block\_log](https://files.rudex.org/golos-classic/blockchain/block_log)
 
-[Список ](https://golos.id/nodes)актуальных seed-нод.
+Обновляемый делегатами [список ](https://golos.id/nodes)API и SEED нод.
 
 Скомпилированные бинарники для v0.22.0:
 

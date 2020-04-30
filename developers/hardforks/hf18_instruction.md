@@ -64,7 +64,7 @@
 **2.** В командном окне войти в директорию, в которой будет создан Docker-образ, и исполнить:
 
 ```text
-git clone https://github.com/GolosChain/golos.git
+git clone https://github.com/golos-blockchain/golos.git
 ```
 
 В пространство, из которого была исполнена команда, должен скопироваться каталог `golos` с его содержимым. В процессе копирования не должны появляться сообщения об ошибках.
@@ -128,7 +128,7 @@ sudo docker run -d \
     -p 8091:8091 \
     -v /etc/golosd:/etc/golosd \
     -v /var/lib/golosd:/var/lib/golosd \
-    --name golos-default  goloschain/golos:latest
+    --name golos-default  golosblockchain/golos:latest
 ```
 
 где:  
@@ -180,7 +180,7 @@ sudo docker run -d \
     -p 8091:8091 \
      -v /etc/golosd:/etc/golosd \
     -v /var/lib/golosd:/var/lib/golosd \
-    --name golos-default  goloschain/golos:latest
+    --name golos-default  golosblockchain/golos:latest
 ```
 
 где:  
@@ -299,16 +299,16 @@ sudo docker start golos-default
 sudo docker stop golos-default
 ```
 
-## Раздел\_3 Обновление GolosChain до новой версии
+## Раздел\_3 Обновление до новой версии
 
-В этом разделе приведена инструкция по обновлению ранее установленного GolosChain до его новой версии HF•18. Предполагается, что ранее установленная версия GolosChain управляется операционной системой Ubuntu 16.04.
+В этом разделе приведена инструкция по обновлению ранее установленного GolosChain до его новой версии HF•18. 
 
 Для обновления GolosChain необходимо следовать следующим указаниям.
 
-**1.** Обновить исходные файлы GolosChain, исполнив:
+**1.** Обновить исходные файлы, исполнив:
 
 ```text
-git clone https://github.com/GolosChain/golos.git
+git clone https://github.com/golos-blockchain/golos.git
 cd golos
 git submodule update --init --recursive -f
 ```
@@ -350,7 +350,7 @@ sudo make install
 
 Количество задаваемых плагинов в переменной `plugin` влияет на объем используемой памяти, а также быстродействие Узла. Минимальный набор плагинов приведен в файле `config_witness.ini`.
 
-**5.** Остановить незавершенные процессы старой версии GolosChain на демоне. В зависимости от конфигурации останов может быть выполнен различными способами, например, с помощью следующих команд:
+**5.** Остановить незавершенные процессы старой версии на демоне. В зависимости от конфигурации останов может быть выполнен различными способами, например, с помощью следующих команд:
 
 ```text
 pkill -15 golosd
@@ -378,11 +378,9 @@ sudo sv stop golosd
     --server-rpc-endpoint="ws://127.0.0.1:8091"
   ```
 
-  Успешное подключение к Узлу будет означать успешное обновление GolosChain.
+  Успешное подключение к Узлу будет означать успешное обновление.
 
 ## Раздел\_4 Изначальная установка блокчейна
-
-В этом разделе приведена инструкция по установке GolosChain обновленной версии. Предполагается, что GolosChain устанавливается изначально на сервер под управлением операционной системы Ubuntu 16.04.
 
 Для установки обновленной версии GolosChain необходимо следовать следующим указаниям.
 
@@ -418,7 +416,7 @@ sudo pip3 install gcovr
 **3.** В отведенное для репозитория место скопировать исходные файлы из github, используя следующие команды:
 
 ```text
-git clone https://github.com/GolosChain/golos.git
+git clone https://github.com/golos-blockchain/golos.git
 cd golos
 git submodule update --init --recursive -f
 ```
@@ -486,7 +484,7 @@ sudo chmod +x /etc/service/golosd/run
 sudo sv start golosd
 ```
 
-**12.** Выполнить проверку успешной установки GolosChain.
+**12.** Выполнить проверку успешной установки.
 
 * Открыть лог-файл и убедиться в следующих фактах:  
   * в файл прекращено поступление новой информации;  

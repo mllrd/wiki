@@ -1,6 +1,6 @@
-# Настройка для бирж
+# Настройка ноды для бирж
 
-## Использование приложения cli\_wallet
+## Использование готового cli\_wallet
 
 > На примере собранного из репозитария `https://github.com/golos-blockchain/golos/tree/golos-v0.22.0` командой биржи RuDEX.
 
@@ -36,6 +36,18 @@ import_key 5JX.............
 get_account rudex
 ```
 
+## Самостоятельная сборка cli\_wallet
+
+Собрать cli\_wallet с исходного кода за 5 первых шагов/пунктов [этой инструкции](../../developers/hardforks/hf18_instruction.md#razdel_4-iznachalnaya-ustanovka-blokcheina).
+
+После чего подключиться к приложению cli\_wallet командой:
+
+```text
+/usr/local/bin/cli_wallet \
+  --wallet="/var/lib/golosd/wallet.json" \
+  --server-rpc-endpoint="wss://api.aleksw.space/ws"
+```
+
 ## Запуск ноды с docker-образа
 
 Устанавливаем сам [Docker](https://wiki.golos.id/witnesses/node/guide#ustanavlivaem-docker).
@@ -62,9 +74,11 @@ shared-file-size = 2G
 min-free-shared-file-size = 500M
 inc-shared-file-size = 2G
 block-num-check-free-size = 1000
-plugin = chain p2p json_rpc webserver network_broadcast_api database_api account_history
+plugin = chain p2p json_rpc webserver network_broadcast_api database_api operation_history account_history
 # Defines a range of accounts exchange to track by the account_history plugin as a json pair ["from","to"] [from,to]. Select an exchange account.
 track-account-range = ["rudex","rudex"]
+history-start-block = 37000000
+history-blocks = 201600
 clear-votes-before-block = 4294967295
 store-account-metadata = false
 replay-if-corrupted = true
@@ -107,7 +121,7 @@ sudo docker logs -f --tail 50 golos-default
 
 ```text
 sudo docker exec -it golos-default cli_wallet \
--w /golosd/wallet.json \
--s ws://localhost:8091
+    -w /golosd/wallet.json \
+    -s ws://localhost:8091
 ```
 

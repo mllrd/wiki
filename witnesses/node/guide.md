@@ -114,7 +114,12 @@ appenders=stderr' | sudo tee -a ~/config/config.ini
 ### **Запускаем контейнер**
 
 ```text
-sudo docker run -it -p 4243:4243 -v ~/config:/etc/golosd -v ~/home/blockchain:/var/lib/golosd/blockchain -v ~/w/:/golosd/ --name golosd vizlex/golos-classic
+sudo docker run -it \
+    -p 4243:4243 \
+    -v ~/config:/etc/golosd \
+    -v ~/home/blockchain:/var/lib/golosd/blockchain \
+    -v ~/w/:/golosd/ \
+    --name golosd vizlex/golos-classic
 ```
 
 Начнётся загрузка образа ноды и реплей \(наполнение файла оперативных данных `shared_memory.bin` из блоков\), который будет продолжаться от пары часов до суток \(в зависимости от производительности вашего сервера\). 
@@ -138,7 +143,9 @@ sudo docker logs -f --tail 50 golosd
 Заходим в cli\_wallet ноды. 
 
 ```text
-sudo docker exec -it golosd cli_wallet -w /golosd/wallet.json -s ws://localhost:8091
+sudo docker exec -it golosd cli_wallet \
+    -w /golosd/wallet.json \
+    -s ws://localhost:8091
 ```
 
 Добавляем свой пароль к cli\_wallet \(запишите его и сохраните\):
@@ -184,7 +191,11 @@ quit
 Запускаем в докере ещё один контейнер, подробнее об этом удобном скрипте можно прочитать [здесь](../price-feed.md).
 
 ```text
-sudo docker run -it -e NODE=ws://localhost:8091 -e WITNESS=ЛОГИН-ДЕЛЕГАТА -e KEY=ПРИВАТНЫЙ-АКТИВНЫЙ-КЛЮЧ --name feed --net=container:golosd vvk123/golos-witness-tools ./update_price_feed.py --monitor
+sudo docker run -it \
+    -e NODE=ws://localhost:8091 \
+    -e WITNESS=ЛОГИН-ДЕЛЕГАТА \
+    -e KEY=ПРИВАТНЫЙ-АКТИВНЫЙ-КЛЮЧ \
+    --name feed --net=container:golosd vvk123/golos-witness-tools ./update_price_feed.py --monitor
 ```
 
 \* нужно заменить логин и приватный активный ключ аккаунта-делегата на свои
@@ -274,7 +285,12 @@ sudo docker rmi vizlex/golos-classic && sudo docker rmi vvk123/golos-witness-too
 Запускаем контейнер с новой версией
 
 ```text
-sudo docker run -it -p 4243:4243 -v ~/config:/etc/golosd -v ~/home/blockchain:/var/lib/golosd/blockchain -v ~/w/:/golosd/ --name golosd vizlex/golos-classic
+sudo docker run -it \
+    -p 4243:4243 \
+    -v ~/config:/etc/golosd \
+    -v ~/home/blockchain:/var/lib/golosd/blockchain \
+    -v ~/w/:/golosd/ \
+    --name golosd vizlex/golos-classic
 ```
 
 После появления логов вида `handle_block "Got 0 transactions on block 34563842 by ..."`, закрываем окно терминала. 
@@ -290,7 +306,11 @@ update_witness "ЛОГИН" "https://golos.id/@ЛОГИН" GLS................. 
 Возвращаем докер-контейнер скрипта публикации прайсфида \(заменив логин и приватный активный ключ аккаунта-делегата на свои\)
 
 ```text
-sudo docker run -it -e NODE=ws://localhost:8091 -e WITNESS=ЛОГИН-ДЕЛЕГАТА -e KEY=ПРИВАТНЫЙ-АКТИВНЫЙ-КЛЮЧ --name feed --net=container:golosd vvk123/golos-witness-tools ./update_price_feed.py --monitor
+sudo docker run -it \
+    -e NODE=ws://localhost:8091 \
+    -e WITNESS=ЛОГИН-ДЕЛЕГАТА \
+    -e KEY=ПРИВАТНЫЙ-АКТИВНЫЙ-КЛЮЧ \
+    --name feed --net=container:golosd vvk123/golos-witness-tools ./update_price_feed.py --monitor
 ```
 
 После появления логов с калькуляцией курса GBG, закрываем окно терминала.

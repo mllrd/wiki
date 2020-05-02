@@ -2,15 +2,15 @@
 
 ## Использование готового cli\_wallet
 
-> На примере собранного из репозитария `https://github.com/golos-blockchain/golos/tree/golos-v0.22.0` командой биржи RuDEX.
+> На примере собранного из репозитария [v0.22.0](https://github.com/golos-blockchain/golos/tree/golos-v0.22.0) командой биржи RuDEX.
 
-Скачиваем готовый cli\_wallet и устанавливаем права на файл
+Скачиваем cli\_wallet и устанавливаем права на файл
 
 ```text
 wget https://files.rudex.org/golos-classic/cli_wallet && chmod +x cli_wallet
 ```
 
-Запускаем cli\_wallet выбрав одну из публичных [API-нод](https://golos.id/nodes)  
+Запускаем cli\_wallet выбрав одну из публичных [API-нод](https://golos.id/nodes), например  
   
 `wss://api.aleksw.space/ws  
 wss://api.golos.blckchnd.com/ws  
@@ -27,20 +27,16 @@ set_password 123456
 
 unlock 123456
 
-import_key 5JX.............
+import_key 5JX..........
 ```
 
-Проверить связь с блокчейном можно например командой запроса  информации об аккаунте, остальные команды к cli\_wallet [здесь](../../developers/api/cli-wallet.md)
-
-```text
-get_account rudex
-```
+Примеры команд к cli\_wallet [здесь](guide-exchange.md#primery-komand-k-cli_wallet).
 
 ## Самостоятельная сборка cli\_wallet
 
-Собрать cli\_wallet с исходного кода за 5 первых шагов/пунктов [этой инструкции](../../developers/hardforks/hf18_instruction.md#razdel_4-iznachalnaya-ustanovka-blokcheina).
+Собрать cli\_wallet с исходного кода за 5 начальных шагов [этой инструкции](../../developers/hardforks/hf18_instruction.md#razdel_4-iznachalnaya-ustanovka-blokcheina).
 
-После чего подключиться к приложению cli\_wallet командой:
+После чего подключиться к приложению cli\_wallet командой
 
 ```text
 /usr/local/bin/cli_wallet \
@@ -48,9 +44,9 @@ get_account rudex
   --server-rpc-endpoint="wss://api.aleksw.space/ws"
 ```
 
-## Запуск ноды с docker-образа
+## Запуск ноды блокчейна с docker-образа
 
-Устанавливаем сам [Docker](https://wiki.golos.id/witnesses/node/guide#ustanavlivaem-docker).
+Устанавливаем [Docker](https://wiki.golos.id/witnesses/node/guide#ustanavlivaem-docker) \(если ещё не был добавлен\).
 
 Скачиваем файл блоков сети Golos Blockchain для ускорения запуска \(без него синхронизация блоков от seed-нод занимает около 2 суток\)
 
@@ -58,7 +54,7 @@ get_account rudex
 wget -P ~/blockchain https://files.rudex.org/golos-classic/blockchain/block_log
 ```
 
-Добавляем актуальный для бирж файл конфигурации ноды \(предварительно поменяв аккаунт в строке `track-account-range`\)
+Добавляем актуальный для бирж файл конфигурации ноды \(предварительно поменяв аккаунт в строке `track-account`\)
 
 ```text
 echo 'webserver-thread-pool-size = 1
@@ -75,8 +71,7 @@ min-free-shared-file-size = 500M
 inc-shared-file-size = 2G
 block-num-check-free-size = 1000
 plugin = chain p2p json_rpc webserver network_broadcast_api database_api operation_history account_history
-# Defines a range of accounts exchange to track by the account_history plugin as a json pair ["from","to"] [from,to]. Select an exchange account.
-track-account-range = ["rudex","rudex"]
+track-account = rudex
 history-start-block = 37000000
 history-blocks = 201600
 clear-votes-before-block = 4294967295
@@ -109,19 +104,41 @@ sudo docker run -d \
     --name golos-default golosblockchain/golos:latest
 ```
 
-Начнётся загрузка образа ноды и реплей \(наполнение файла данных `shared_memory.bin` из блоков\), который будет продолжаться несколько часов \(в зависимости от производительности сервера\). 
+Начнётся загрузка образа ноды и реплей \(наполнение файла данных `shared_memory.bin` из блоков\), который будет продолжаться несколько часов. 
 
-Посмотреть логи
+Посмотреть логи командой
 
 ```text
 sudo docker logs -f --tail 50 golos-default
 ```
 
-Подключение к cli\_wallet в контейнере ноды, команды [здесь](../../developers/api/cli-wallet.md)
+Подключение к cli\_wallet в контейнере ноды
 
 ```text
 sudo docker exec -it golos-default cli_wallet \
     -w /golosd/wallet.json \
     -s ws://localhost:8091
 ```
+
+## Примеры команд к cli\_wallet
+
+Получение информации об аккаунте
+
+```text
+get_account rudex
+```
+
+Перевод токенов
+
+```text
+transfer rudex test "1.000 GOLOS" "memotest" true
+```
+
+Запрос истории последних 20 трансферов где получателем был аккаунт \(иные варианты фильтра истории описаны [тут](https://github.com/GolosChain/golos/pull/918)\)
+
+```text
+filter_account_history rudex -1 20 {"direction":"receiver","select_ops":["transfer_operation"]}
+```
+
+Список команд к cli\_wallet можно найти [здесь](../../developers/api/cli-wallet.md) или сформировать формат напр. пользуясь интерфейсом сервиса [https://ropox.app/steemjs/api/](https://ropox.app/steemjs/api/)
 

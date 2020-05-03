@@ -119,7 +119,7 @@ sudo docker run -it \
     -v ~/config:/etc/golosd \
     -v ~/home/blockchain:/var/lib/golosd/blockchain \
     -v ~/w/:/golosd/ \
-    --name golosd vizlex/golos-classic
+    --name golosd vizlex/golos:latest
 ```
 
 Начнётся загрузка образа ноды и реплей \(наполнение файла оперативных данных `shared_memory.bin` из блоков\), который будет продолжаться от пары часов до суток \(в зависимости от производительности вашего сервера\). 
@@ -279,7 +279,7 @@ sudo docker stop feed && sudo docker rm feed
 Удаляем образы для ноды и скрипта прайсфида
 
 ```text
-sudo docker rmi vizlex/golos-classic && sudo docker rmi vvk123/golos-witness-tools
+sudo docker rmi vizlex/golos && sudo docker rmi vvk123/golos-witness-tools
 ```
 
 Запускаем контейнер с новой версией
@@ -290,7 +290,7 @@ sudo docker run -it \
     -v ~/config:/etc/golosd \
     -v ~/home/blockchain:/var/lib/golosd/blockchain \
     -v ~/w/:/golosd/ \
-    --name golosd vizlex/golos-classic
+    --name golosd vizlex/golos:latest
 ```
 
 После появления логов вида `handle_block "Got 0 transactions on block 34563842 by ..."`, закрываем окно терминала. 

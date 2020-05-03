@@ -109,7 +109,7 @@ sudo docker run -it \
     -p 127.0.0.1:8091:8091 \
     -v ~/config:/etc/golosd \
     -v ~/home/blockchain:/var/lib/golosd/blockchain \
-    --name golosd vizlex/golos-classic
+    --name golosd golosblockchain/golos:latest
 ```
 
 После загрузки докер-образа и реплея \(который занимает несколько часов\), с получением логов вида `handle_block "Got 0 transactions on block 35071930 by ..."` нода готова к работе.

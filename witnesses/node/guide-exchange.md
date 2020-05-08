@@ -4,35 +4,29 @@
 
 > На примере собранного из репозитария [v0.22.0](https://github.com/golos-blockchain/golos/tree/golos-v0.22.0) командой биржи RuDEX.
 
-Скачиваем cli\_wallet и устанавливаем права на файл
+Скачиваем cli\_wallet и устанавливаем права на файл:
 
 ```text
 wget https://files.rudex.org/golos-classic/cli_wallet && chmod +x cli_wallet
 ```
 
-Запускаем cli\_wallet выбрав одну из публичных [API-нод](https://golos.id/nodes):  
-  
-`wss://api.aleksw.space/ws  
-wss://api.golos.blckchnd.com/ws  
-wss://golos.lexa.host/ws`
-
-**Параметры запуска** cli\_wallet можно посмотреть командой`./cli_wallet --help`
-
-Например открыть порт для RPC и команды кошелька могут быть вызваны через HTTP:
-
-`-H 127.0.0.1:8094  
-Endpoint for wallet HTTP RPC to listen on`
-
-Или запустить кошелёк в режиме демона:
-
-`-d  
-Run the wallet in daemon mode`
+Запускаем cli\_wallet выбрав одну из публичных [API-нод](https://golos.id/nodes).
 
 ```text
-./cli_wallet -s wss://api.aleksw.space/ws
+./cli_wallet -s wss://api.aleksw.space/ws --rpc-http-endpoint 127.0.0.1:8094 --rpc-http-allowip 127.0.0.1
 ```
 
-Устанавливаем пароль на кошелёк, разблокируем его, импортируем приватный активный ключ для осущестления переводов
+Все **параметры запуска** cli\_wallet можно посмотреть командой`./cli_wallet --help`
+
+В примере выше были заданы: 
+
+`--rpc-http-endpoint 127.0.0.1:8094  
+Endpoint for wallet HTTP RPC to listen on`
+
+`--rpc-http-allowip 127.0.0.1  
+Allows only specified IPs to connect to the HTTP endpoint`
+
+Устанавливаем пароль на кошелёк, разблокируем его, импортируем приватный активный ключ для осущестления переводов.
 
 ```text
 set_password 123456
@@ -42,7 +36,12 @@ unlock 123456
 import_key 5JX..........
 ```
 
-Примеры команд к cli\_wallet [здесь](guide-exchange.md#primery-komand-k-cli_wallet).
+Вероятно будет удобно перезапустить cli\_wallet в режиме демона, добавив к команде запуска опцию:
+
+`-d [ --daemon ]  
+Run the wallet in daemon mode`
+
+Примеры команд к cli\_wallet [описаны ниже](guide-exchange.md#primery-komand-k-cli_wallet).
 
 ## Самостоятельная сборка cli\_wallet
 

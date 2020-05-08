@@ -10,11 +10,23 @@
 wget https://files.rudex.org/golos-classic/cli_wallet && chmod +x cli_wallet
 ```
 
-Запускаем cli\_wallet выбрав одну из публичных [API-нод](https://golos.id/nodes), например  
+Запускаем cli\_wallet выбрав одну из публичных [API-нод](https://golos.id/nodes):  
   
 `wss://api.aleksw.space/ws  
 wss://api.golos.blckchnd.com/ws  
 wss://golos.lexa.host/ws`
+
+**Параметры запуска** cli\_wallet можно посмотреть командой`./cli_wallet --help`
+
+Например открыть порт для RPC и команды кошелька могут быть вызваны через HTTP:
+
+`-H 127.0.0.1:8094  
+Endpoint for wallet HTTP RPC to listen on`
+
+Или запустить кошелёк в режиме демона:
+
+`-d  
+Run the wallet in daemon mode`
 
 ```text
 ./cli_wallet -s wss://api.aleksw.space/ws

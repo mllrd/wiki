@@ -36,7 +36,7 @@ unlock 123456
 import_key 5JX..........
 ```
 
-Вероятно будет удобно перезапустить cli\_wallet в режиме демона, добавив к команде запуска опцию:
+Возможно будет удобно запустить cli\_wallet в режиме демона, добавив к команде запуска опцию:
 
 `-d [ --daemon ]  
 Run the wallet in daemon mode`
@@ -52,7 +52,9 @@ Run the wallet in daemon mode`
 ```text
 /usr/local/bin/cli_wallet \
   --wallet="/var/lib/golosd/wallet.json" \
-  --server-rpc-endpoint="wss://api.aleksw.space/ws"
+  --server-rpc-endpoint="wss://api.aleksw.space/ws" \
+  --rpc-http-endpoint="127.0.0.1:8094" \
+  --rpc-http-allowip="127.0.0.1"
 ```
 
 ## Запуск ноды блокчейна с docker-образа
@@ -131,25 +133,47 @@ sudo docker exec -it golos-default cli_wallet \
     -s ws://localhost:8091
 ```
 
-## Примеры команд к cli\_wallet
+## Примеры команд к cli\_wallet через curl
+
+Установка на кошелёк пароля и разблокировка:
+
+```text
+curl --data '{"jsonrpc": "2.0", "method": "set_password", "params": ["123456"], "id": 1}' http://127.0.0.1:8094
+```
+
+```text
+curl --data '{"jsonrpc": "2.0", "method": "unlock", "params": ["123456"], "id": 1}' http://127.0.0.1:8094
+```
+
+Импортирование ключа в кошелёк
+
+```text
+curl --data '{"jsonrpc": "2.0", "method": "import_key", "params": ["5JVFFWRLwz6JoP9kguuRFfytToGU6cLgBVTL9t6NB3D3BQLbUBS"], "id": 1}' http://127.0.0.1:8094
+```
+
+Список добавленных в кошелёк аккаунтов
+
+```text
+curl --data '{"jsonrpc": "2.0", "method": "list_my_accounts", "params": [], "id": 1}' http://127.0.0.1:8094
+```
 
 Получение информации об аккаунте
 
 ```text
-get_account rudex
+curl --data '{"jsonrpc": "2.0", "method": "get_account", "params": ["livecoin"], "id": 1}' http://127.0.0.1:8094
 ```
 
-Перевод токенов
+Перевод/трансфер токенов
 
 ```text
-transfer rudex test "1.000 GOLOS" "memotest" true
+curl --data '{"jsonrpc": "2.0", "method": "transfer", "params": ["livecoin","test","1.000 GOLOS","",true], "id": 1}' http://127.0.0.1:8094
 ```
 
 Запрос истории последних 20 трансферов где получателем был аккаунт \(иные варианты фильтра истории описаны [тут](https://github.com/GolosChain/golos/pull/918)\)
 
 ```text
-filter_account_history rudex -1 20 {"direction":"receiver","select_ops":["transfer_operation"]}
+curl --data '{"jsonrpc": "2.0", "method": "filter_account_history", "params": ["livecoin",-1,20,{"direction":"receiver","select_ops":["transfer_operation"]}], "id": 1}' http://127.0.0.1:8094
 ```
 
-Список команд к cli\_wallet можно найти [здесь](../../developers/api/cli-wallet.md) или сформировать формат напр. пользуясь интерфейсом сервиса [https://ropox.app/steemjs/api/](https://ropox.app/steemjs/api/)
+Список команд к cli\_wallet также есть [здесь](../../developers/api/cli-wallet.md) или сформировать формат пользуясь сервисом [https://ropox.app/steemjs/api/](https://ropox.app/steemjs/api/)
 

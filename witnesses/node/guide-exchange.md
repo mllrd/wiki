@@ -2,7 +2,7 @@
 
 ## Использование готового cli\_wallet
 
-> На примере собранного из репозитария [v0.22.0](https://github.com/golos-blockchain/golos/tree/golos-v0.22.0) командой биржи RuDEX.
+> На примере собранного из репозитария [v0.23.0](https://github.com/golos-blockchain/golos/tree/golos-v0.23.0) командой биржи RuDEX.
 
 Скачиваем cli\_wallet и устанавливаем права на файл:
 

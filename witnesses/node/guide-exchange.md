@@ -114,7 +114,7 @@ sudo docker run -d \
     -p 127.0.0.1:8090:8090 \
     -p 127.0.0.1:8091:8091 \
     -v ~/config.ini:/etc/golosd/config.ini \
-    -v ~/blockchain:/var/lib/golosd/blockchain
+    -v ~/blockchain:/var/lib/golosd/blockchain \
     --name golos-default golosblockchain/golos:latest
 ```
 

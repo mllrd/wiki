@@ -410,6 +410,7 @@ sudo apt-get install -y \
         python3-dev \
         python3-pip \
         runit
+        
 sudo pip3 install gcovr
 ```
 
@@ -417,7 +418,9 @@ sudo pip3 install gcovr
 
 ```text
 git clone https://github.com/golos-blockchain/golos.git
+
 cd golos
+
 git submodule update --init --recursive -f
 ```
 
@@ -427,7 +430,9 @@ git submodule update --init --recursive -f
 
 ```text
 mkdir build
+
 cd build
+
 cmake \
     -DCMAKE_BUILD_TYPE=Release \
     -DBUILD_GOLOS_TESTNET=FALSE \
@@ -441,6 +446,7 @@ cmake \
 
 ```text
 make -j $(nproc)
+
 sudo make install
 ```
 

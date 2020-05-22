@@ -41,13 +41,13 @@ import_key 5JX..........
 `-d [ --daemon ]  
 Run the wallet in daemon mode`
 
-Примеры команд к cli\_wallet [описаны ниже](guide-exchange.md#primery-komand-k-cli_wallet).
+Примеры команд к cli\_wallet [описаны ниже](guide-exchange.md#primery-komand-k-cli_wallet-cherez-curl).
 
 ## Самостоятельная сборка cli\_wallet
 
-Собрать cli\_wallet с исходного кода за 5 начальных шагов [этой инструкции](../../developers/hardforks/hf18_instruction.md#razdel_4-iznachalnaya-ustanovka-blokcheina).
+Собрать cli\_wallet можно и с исходного кода за 5 начальных шагов [этой инструкции](../../developers/hardforks/hf18_instruction.md#razdel_4-iznachalnaya-ustanovka-blokcheina).
 
-После чего подключиться к приложению cli\_wallet командой
+После чего подключиться к cli\_wallet командой:
 
 ```text
 /usr/local/bin/cli_wallet \
@@ -67,7 +67,9 @@ Run the wallet in daemon mode`
 wget -P ~/blockchain https://files.rudex.org/golos-classic/blockchain/block_log
 ```
 
-Добавляем актуальный для бирж файл конфигурации ноды \(предварительно поменяв аккаунт в строке `track-account`\)
+Альтернативный адрес для скачивания - [https://files.golos.id/block\_log](https://files.golos.id/block_log)
+
+Добавляем актуальный для бирж файл конфигурации ноды \(предварительно поменяв аккаунт отслеживания истории в строке `track-account`\)
 
 ```text
 echo 'webserver-thread-pool-size = 1
@@ -83,7 +85,7 @@ shared-file-size = 2G
 min-free-shared-file-size = 500M
 inc-shared-file-size = 2G
 block-num-check-free-size = 1000
-plugin = chain p2p json_rpc webserver network_broadcast_api database_api operation_history account_history
+plugin = chain p2p json_rpc webserver network_broadcast_api database_api account_history
 track-account = rudex
 history-start-block = 37000000
 history-blocks = 201600
@@ -112,8 +114,7 @@ sudo docker run -d \
     -p 127.0.0.1:8090:8090 \
     -p 127.0.0.1:8091:8091 \
     -v ~/config.ini:/etc/golosd/config.ini \
-    -v ~/blockchain:/var/lib/golosd/blockchain \
-    -v ~/wallet/:/golosd/ \
+    -v ~/blockchain:/var/lib/golosd/blockchain
     --name golos-default golosblockchain/golos:latest
 ```
 

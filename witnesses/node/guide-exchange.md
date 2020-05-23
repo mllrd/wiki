@@ -113,6 +113,7 @@ appenders=stderr' | sudo tee -a ~/config.ini
 sudo docker run -d \
     -p 127.0.0.1:8090:8090 \
     -p 127.0.0.1:8091:8091 \
+    -p 127.0.0.1:8094:8094 \
     -v ~/config.ini:/etc/golosd/config.ini \
     -v ~/blockchain:/var/lib/golosd/blockchain \
     --name golos-default golosblockchain/golos:latest
@@ -126,12 +127,14 @@ sudo docker run -d \
 sudo docker logs -f --tail 50 golos-default
 ```
 
-Подключение к cli\_wallet в контейнере ноды
+Запуск приложения cli\_wallet внутри контейнера ноды
 
 ```text
 sudo docker exec -it golos-default cli_wallet \
-    -w /golosd/wallet.json \
-    -s ws://localhost:8091
+  --wallet="/golosd/wallet.json" \
+  --server-rpc-endpoint="ws://localhost:8091" \
+  --rpc-http-endpoint="0.0.0.0:8094" \
+  --rpc-http-allowip="172.17.0.1"
 ```
 
 ## Примеры команд к cli\_wallet через curl

@@ -246,6 +246,12 @@ update_chain_properties ЛОГИН {"max_referral_interest_rate":1000, "max_refe
 update_chain_properties ЛОГИН {"worker_reward_percent":1000, "witness_reward_percent":1500, "vesting_reward_percent":6500, "worker_request_creation_fee":"100.000 GBG", "worker_request_approve_min_percent":1500, "sbd_debt_convert_rate":100, "vote_regeneration_per_day":10, "witness_skipping_reset_time":21600, "witness_idleness_time":7776000, "account_idleness_time":15552000} true
 ```
 
+Параметры добавленные с 23 ХФ:
+
+```text
+update_chain_properties ЛОГИН {"claim_idleness_time":86400, "min_invite_balance":"10.000 GOLOS"} true
+```
+
 ## **Обновление ноды**
 
 Ставим “пустой ключ” для ноды чтобы приостановить подпись блоков через параметры на странице [https://golos.id/@lex/witness](https://golos.id/@lex/witness) \(заменив на свой логин\).  

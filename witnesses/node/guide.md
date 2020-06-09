@@ -50,7 +50,8 @@ sudo wget -P ~/home/blockchain https://files.rudex.org/golos-classic/blockchain/
 
 ```text
 mkdir ~/config && echo 'seed1.golos.blckchnd.com:30218
-seed.golos.lexa.host:4243
+golos1.lexai.host:4243
+golos2.lexai.host:4243
 95.216.200.20:3001
 seed1.vvk.pp.ru:2001
 seed.aleksw.space:4243

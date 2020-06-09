@@ -51,7 +51,8 @@ sudo wget -P ~/home/blockchain https://files.rudex.org/golos-classic/blockchain/
 
 ```text
 mkdir ~/config && echo 'seed1.golos.blckchnd.com:30218
-seed.golos.lexa.host:4243
+golos1.lexai.host:4243
+golos2.lexai.host:4243
 95.216.200.20:3001
 seed1.vvk.pp.ru:2001
 seed.aleksw.space:4243
@@ -139,7 +140,7 @@ sudo nano /etc/nginx/sites-enabled/node.conf
 ```text
 server {
 listen 80;
-server_name test.lexa.host;
+server_name test.lexai.host;
 location / {
 if ($request_method = 'OPTIONS') {
 add_header 'Access-Control-Allow-Origin' '*';
@@ -256,7 +257,7 @@ sudo systemctl restart nginx
 sudo systemctl status nginx.service
 ```
 
-Мы запустили публичную API-ноду, к которой можно подключаться как по адресу `https://test.lexa.host` \(RPC\) так и `wss://test.lexa.host/ws` \(WebSockets\).
+Мы запустили публичную API-ноду, к которой можно подключаться как по адресу `https://test.lexai.host` \(RPC\) так и `wss://test.lexai.host/ws` \(WebSockets\).
 
 При получении письма на e-mail о необходимости обновить сертификат \(раз в 90 дней\), это можно сделать командой:
 

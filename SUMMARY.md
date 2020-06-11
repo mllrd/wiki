@@ -38,6 +38,7 @@
   * [HF19: Новые возможности](developers/hardforks/hf19_release.md)
   * [HF20: Устранение критического бага](developers/hardforks/hf20_release.md)
   * [HF22: Новые возможности](developers/hardforks/hf22_release.md)
+  * [HF23: Новые возможности](developers/hardforks/hf23_release.md)
 * [Руководства \(HOWTO\)](developers/howto/README.md)
   * [Скрипт регистрации аккаунтов](developers/howto/registration-service.md)
   * [Как использовать мультиподписи](developers/howto/multisig.md)

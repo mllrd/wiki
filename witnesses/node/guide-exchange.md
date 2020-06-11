@@ -72,7 +72,7 @@ wget -P ~/blockchain https://files.rudex.org/golos-classic/blockchain/block_log
 Добавляем актуальный для бирж файл конфигурации ноды \(предварительно поменяв аккаунт отслеживания истории в строке `track-account`\)
 
 ```text
-echo 'webserver-thread-pool-size = 1
+echo 'webserver-thread-pool-size = 2
 webserver-http-endpoint = 0.0.0.0:8090
 webserver-ws-endpoint = 0.0.0.0:8091
 read-wait-micro = 500000
@@ -85,10 +85,10 @@ shared-file-size = 2G
 min-free-shared-file-size = 500M
 inc-shared-file-size = 2G
 block-num-check-free-size = 1000
-plugin = chain p2p json_rpc webserver network_broadcast_api database_api operation_history account_history
+plugin = chain p2p json_rpc webserver network_broadcast_api database_api operation_history account_history account_by_key
 track-account = rudex
 history-start-block = 37000000
-history-blocks = 201600
+history-blocks = 403200
 clear-votes-before-block = 4294967295
 store-account-metadata = false
 replay-if-corrupted = true

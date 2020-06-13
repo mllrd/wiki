@@ -1,10 +1,8 @@
 # Настройка для API-ноды
 
-Публичные API-ноды важная составляющая для блокчейна, особенно когда есть заинтересованность в развитии приложений \(клиентов, ботов, скриптов, игр и пр.\), которые порой повышают ценность для всего проекта.
+Публичные API-ноды важная составляющая для блокчейна, особенно когда есть заинтересованность в развитии приложений \(клиентов, ботов, скриптов, игр и пр.\), которые часто повышают ценность всего проекта.
 
-В зависимости от целей, API-ноду можно поднять начиная с 2 ядер процессора, 8 Гб RAM и 80 Гб SSD памяти. Есть провайдеры, где подходящая VPS-ка обойдётся всего в [10$ за месяц](https://contabo.com/?show=configurator&vserver_id=229).
-
-Ниже описан вариант установки публичной API-ноды для блокчейна GOLOS \(с хранением истории на неделю\). Для такой ноды, оптимальный вариант VPS-ка с 16 Гб RAM памяти.
+Ниже описан вариант установки API-ноды \(с хранением истории операций за неделю\). Для такой, оптимальный вариант - сервер с 16 Гб оперативной памяти и 80 Гб SSD накопителя.
 
 ## Устанавливаем Docker
 
@@ -47,26 +45,16 @@ sudo apt-get install docker-ce -y
 sudo wget -P ~/home/blockchain https://files.rudex.org/golos-classic/blockchain/block_log
 ```
 
-Создаем папку и добавляем файл c актуальными seed-нодами.
+Альтернативный адрес
 
 ```text
-mkdir ~/config && echo 'seed1.golos.blckchnd.com:30218
-golos1.lexai.host:4243
-golos2.lexai.host:4243
-95.216.200.20:3001
-seed1.vvk.pp.ru:2001
-seed.aleksw.space:4243
-116.202.162.207:2001
-94.130.24.42:2001
-78.47.150.171:4243
-95.217.7.47:4243
-95.217.133.230:4243' | sudo tee -a ~/config/seednodes
+sudo wget -P ~/home/blockchain https://files.golos.id/block_log
 ```
 
-Добавляем конфиг ноды \(указанные в нём `202800` блоков = неделя\). Какие плагины нужны для ваших целей, можно напр. уточнить в чате делегатов [https://t.me/golos\_witnesses](https://t.me/golos_witnesses)
+Добавляем конфиг ноды \(указанные в нём `202800` блоков = неделя\). Какие плагины нужны для ваших целей, можно уточнить в чате делегатов [https://t.me/golos\_witnesses](https://t.me/golos_witnesses)
 
 ```text
-echo 'webserver-thread-pool-size = 2
+mkdir ~/config && echo 'webserver-thread-pool-size = 2
 webserver-http-endpoint = 0.0.0.0:8090
 webserver-ws-endpoint = 0.0.0.0:8091
 read-wait-micro = 500000
@@ -81,7 +69,7 @@ inc-shared-file-size = 2G
 block-num-check-free-size = 1000
 plugin = chain p2p json_rpc webserver network_broadcast_api witness database_api witness_api follow social_network tags operation_history account_history market_history account_by_key worker_api
 clear-votes-before-block = 4294967295
-history-start-block = 34880000
+history-start-block = 38000000
 comment-title-depth = 202800
 comment-body-depth = 202800
 comment-json-metadata-depth = 202800
@@ -108,7 +96,7 @@ appenders=stderr' | sudo tee -a ~/config/config.ini
 sudo docker run -it \
     -p 127.0.0.1:8090:8090 \
     -p 127.0.0.1:8091:8091 \
-    -v ~/config:/etc/golosd \
+    -v ~/config/config.ini:/etc/golosd/config.ini \
     -v ~/home/blockchain:/var/lib/golosd/blockchain \
     --name golosd golosblockchain/golos:latest
 ```

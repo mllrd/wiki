@@ -69,12 +69,14 @@ Run the wallet in daemon mode`
 {% tab title="Сервер в Финляндии" %}
 ```text
 wget -P ~/blockchain --user=u233417-sub1 --password=xCbthClwoWSVGIt1 https://u233417-sub1.your-storagebox.de/block_log
+
 ```
 {% endtab %}
 
 {% tab title="Сервер в Германии" %}
 ```text
 wget -P ~/blockchain --user=u229207-sub1 --password=dbxnfJ9nWlbi6XZE https://u229207-sub1.your-storagebox.de/block_log
+
 ```
 {% endtab %}
 {% endtabs %}
@@ -89,6 +91,7 @@ mkdir -p ~/blockchain
 rsync --progress -e 'ssh -p23' --recursive u233417-sub1@u233417-sub1.your-storagebox.de: ~/blockchain/
 
 Пароль xCbthClwoWSVGIt1
+
 ```
 {% endtab %}
 
@@ -99,6 +102,7 @@ mkdir -p ~/blockchain
 rsync --progress -e 'ssh -p23' --recursive u229207-sub1@u229207-sub1.your-storagebox.de: ~/blockchain/
 
 Пароль dbxnfJ9nWlbi6XZE
+
 ```
 {% endtab %}
 {% endtabs %}

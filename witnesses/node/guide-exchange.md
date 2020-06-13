@@ -18,7 +18,7 @@ wget https://files.rudex.org/golos-classic/cli_wallet && chmod +x cli_wallet
 
 Все **параметры запуска** cli\_wallet можно посмотреть командой`./cli_wallet --help`
 
-В примере выше были заданы: 
+В примере выше заданы: 
 
 `--rpc-http-endpoint 127.0.0.1:8094  
 Endpoint for wallet HTTP RPC to listen on`
@@ -36,7 +36,7 @@ unlock 123456
 import_key 5JX..........
 ```
 
-Возможно будет удобно запустить cli\_wallet в режиме демона, добавив к команде запуска опцию:
+Возможно вместо запуска cli\_wallet с помощью Screen будет удобно использовать режим демона, добавив к команде опцию:
 
 `-d [ --daemon ]  
 Run the wallet in daemon mode`
@@ -59,17 +59,51 @@ Run the wallet in daemon mode`
 
 ## Запуск ноды блокчейна с docker-образа
 
-Устанавливаем [Docker](https://wiki.golos.id/witnesses/node/guide#ustanavlivaem-docker) \(если ещё не был добавлен\).
+Устанавливаем [Docker](https://wiki.golos.id/witnesses/node/guide#ustanavlivaem-docker) \(если его ещё нет\).
 
-Скачиваем файл блоков сети Golos Blockchain для ускорения запуска \(без него синхронизация блоков от seed-нод занимает около 2 суток\)
+Скачиваем файл цепочки блоков \(без него синхронизация от seed-нод занимает около 2 суток\), либо полный бэкап \(с ним запуск займёт менее часа\).  
+  
+Только цепочка блоков \(реплей займёт несколько часов\):
 
+{% tabs %}
+{% tab title="Сервер в Финляндии" %}
 ```text
-wget -P ~/blockchain https://files.rudex.org/golos-classic/blockchain/block_log
+wget -P ~/blockchain --user=u233417-sub1 --password=xCbthClwoWSVGIt1 https://u233417-sub1.your-storagebox.de/block_log
 ```
+{% endtab %}
 
-Альтернативный адрес для скачивания - [https://files.golos.id/block\_log](https://files.golos.id/block_log)
+{% tab title="Сервер в Германии" %}
+```text
+wget -P ~/blockchain --user=u229207-sub1 --password=dbxnfJ9nWlbi6XZE https://u229207-sub1.your-storagebox.de/block_log
+```
+{% endtab %}
+{% endtabs %}
 
-Добавляем актуальный для бирж файл конфигурации ноды \(предварительно поменяв аккаунт отслеживания истории в строке `track-account`\)
+Полный бэкап \(без реплея, менее часа\):
+
+{% tabs %}
+{% tab title="Сервер в Финляндии" %}
+```text
+mkdir -p ~/blockchain
+
+rsync --progress -e 'ssh -p23' --recursive u233417-sub1@u233417-sub1.your-storagebox.de: ~/blockchain/
+
+Пароль xCbthClwoWSVGIt1
+```
+{% endtab %}
+
+{% tab title="Сервер в Германии" %}
+```
+mkdir -p ~/blockchain
+
+rsync --progress -e 'ssh -p23' --recursive u229207-sub1@u229207-sub1.your-storagebox.de: ~/blockchain/
+
+Пароль dbxnfJ9nWlbi6XZE
+```
+{% endtab %}
+{% endtabs %}
+
+Добавляем актуальный для бирж файл конфигурации ноды \(предварительно поменяв аккаунт отслеживания в строке `track-account` и срок хранения истории `history-blocks`, 403200 x 3 секунды = 14 дней\).
 
 ```text
 echo 'webserver-thread-pool-size = 2
@@ -119,15 +153,15 @@ sudo docker run -d \
     --name golos-default golosblockchain/golos:latest
 ```
 
-Начнётся загрузка образа ноды и реплей \(наполнение файла данных `shared_memory.bin` из блоков\), который будет продолжаться несколько часов. 
+Начнётся загрузка образа ноды и реплей \(наполнение `shared_memory.bin` из файла цепочки блоков, если запуск был не с полного бэкапа\).
 
-Посмотреть логи командой
+Посмотреть логи командой:
 
 ```text
 sudo docker logs -f --tail 50 golos-default
 ```
 
-Запуск приложения cli\_wallet внутри контейнера ноды
+Запуск приложения cli\_wallet внутри контейнера ноды:
 
 ```text
 sudo docker exec -it golos-default cli_wallet \
@@ -149,34 +183,34 @@ curl --data '{"jsonrpc": "2.0", "method": "set_password", "params": ["123456"], 
 curl --data '{"jsonrpc": "2.0", "method": "unlock", "params": ["123456"], "id": 1}' http://127.0.0.1:8094
 ```
 
-Импортирование ключа в кошелёк
+Импортирование приватного активного ключа в кошелёк:
 
 ```text
 curl --data '{"jsonrpc": "2.0", "method": "import_key", "params": ["5JVFFWRLwz6JoP9kguuRFfytToGU6cLgBVTL9t6NB3D3BQLbUBS"], "id": 1}' http://127.0.0.1:8094
 ```
 
-Список добавленных в кошелёк аккаунтов
+Список добавленных в кошелёк аккаунтов:
 
 ```text
 curl --data '{"jsonrpc": "2.0", "method": "list_my_accounts", "params": [], "id": 1}' http://127.0.0.1:8094
 ```
 
-Получение информации об аккаунте
+Получение информации об аккаунте:
 
 ```text
-curl --data '{"jsonrpc": "2.0", "method": "get_account", "params": ["livecoin"], "id": 1}' http://127.0.0.1:8094
+curl --data '{"jsonrpc": "2.0", "method": "get_account", "params": ["rudex"], "id": 1}' http://127.0.0.1:8094
 ```
 
-Перевод/трансфер токенов
+Перевод/трансфер токенов:
 
 ```text
-curl --data '{"jsonrpc": "2.0", "method": "transfer", "params": ["livecoin","test","1.000 GOLOS","",true], "id": 1}' http://127.0.0.1:8094
+curl --data '{"jsonrpc": "2.0", "method": "transfer", "params": ["rudex","test","1.000 GOLOS","",true], "id": 1}' http://127.0.0.1:8094
 ```
 
-Запрос истории последних 20 трансферов где получателем был аккаунт \(иные варианты фильтра истории описаны [тут](https://github.com/GolosChain/golos/pull/918)\)
+Запрос истории последних 20 трансферов где получателем был аккаунт \(иные варианты фильтра истории [описаны тут](../../developers/hardforks/sf18.4_release.md#filtraciya-zaprashivaemoi-informacii-ob-operaciyakh-iz-istorii-akkaunta)\):
 
 ```text
-curl --data '{"jsonrpc": "2.0", "method": "filter_account_history", "params": ["livecoin",-1,20,{"direction":"receiver","select_ops":["transfer_operation"]}], "id": 1}' http://127.0.0.1:8094
+curl --data '{"jsonrpc": "2.0", "method": "filter_account_history", "params": ["rudex",-1,20,{"direction":"receiver","select_ops":["transfer_operation"]}], "id": 1}' http://127.0.0.1:8094
 ```
 
 Список команд к cli\_wallet также есть [здесь](../../developers/api/cli-wallet.md) или сформировать формат пользуясь сервисом [https://ropox.app/steemjs/api/](https://ropox.app/steemjs/api/)

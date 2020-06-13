@@ -40,17 +40,32 @@ sudo apt-get install docker-ce -y
 
 ## Устанавливаем ноду
 
-Скачиваем большую часть блоков напрямую с сервера \(чтобы не тратить сутки-двое на их получение и лишнюю нагрузку делегатских seed-нод\).
+Скачиваем большую часть блоков напрямую с сервера \(чтобы не тратить более суток на их получение и лишнюю нагрузку делегатских seed-нод\).
 
+{% tabs %}
+{% tab title="Сервер в Финляндии" %}
 ```text
-sudo wget -P ~/home/blockchain https://files.rudex.org/golos-classic/blockchain/block_log
+wget -P ~/home/blockchain --user=u233417-sub1 --password=xCbthClwoWSVGIt1 https://u233417-sub1.your-storagebox.de/block_log
+
 ```
+{% endtab %}
 
-Альтернативный адрес
-
+{% tab title="Сервер в Германии" %}
 ```text
-sudo wget -P ~/home/blockchain https://files.golos.id/block_log
+wget -P ~/home/blockchain --user=u229207-sub1 --password=dbxnfJ9nWlbi6XZE https://u229207-sub1.your-storagebox.de/block_log
+
 ```
+{% endtab %}
+
+{% tab title="Другие" %}
+```
+wget -P ~/home/blockchain https://files.rudex.org/golos-classic/blockchain/block_log
+
+wget -P ~/home/blockchain https://files.golos.id/block_log
+
+```
+{% endtab %}
+{% endtabs %}
 
 ### **Генерируем ключи**
 
@@ -217,31 +232,37 @@ sudo docker restart golosd
 
 Заходим на [https://golos.id/~witnesses](https://golos.id/~witnesses) и напротив своего делегата в столбце “Параметры” нажимаем на значок настроек **\(**описание каждого параметра возникает при наведении мышкой\).
 
-[Подробнее](../median-props.md) о значении медианных параметров.
+[Подробнее](../median-props.md) о значении медианных параметров. Изменить параметры можно и через [cli\_wallet](https://wiki.golos.id/witnesses/node/guide#rabota-s-cli-wallet) ноды, заменив логин и выполнив команду:
 
-Изменить параметры можно и через [cli\_wallet](https://wiki.golos.id/witnesses/node/guide#rabota-s-cli-wallet) ноды, заменив логин и выполнив команду:
-
+{% tabs %}
+{% tab title="Базовые" %}
 ```text
 update_chain_properties ЛОГИН {"account_creation_fee":"1.000 GOLOS", "maximum_block_size":65536, "sbd_interest_rate":0, "create_account_min_golos_fee":"0.100 GOLOS", "create_account_min_delegation":"1.000 GOLOS", "create_account_delegation_time":2592000, "min_delegation":"1.000 GOLOS"} true
+
 ```
+{% endtab %}
 
-Параметры добавленные с 19 ХФ:
-
+{% tab title="19 ХФ" %}
 ```text
 update_chain_properties ЛОГИН {"max_referral_interest_rate":1000, "max_referral_term_sec":15552000, "min_referral_break_fee":"1.000 GOLOS", "max_referral_break_fee":"100.000 GOLOS", "posts_window":3, "posts_per_window":1, "comments_window":200, "comments_per_window":10, "votes_window":15, "votes_per_window":5, "auction_window_size":0, "max_delegated_vesting_interest_rate":8000, "custom_ops_bandwidth_multiplier":10, "min_curation_percent":7500, "max_curation_percent":7500, "curation_reward_curve":"square_root", "allow_distribute_auction_reward":true, "allow_return_auction_reward_to_fund":true} true
+
 ```
+{% endtab %}
 
-Параметры добавленные с 22 ХФ:
-
-```text
+{% tab title="22 ХФ" %}
+```
 update_chain_properties ЛОГИН {"worker_reward_percent":1000, "witness_reward_percent":1500, "vesting_reward_percent":6500, "worker_request_creation_fee":"100.000 GBG", "worker_request_approve_min_percent":1500, "sbd_debt_convert_rate":100, "vote_regeneration_per_day":10, "witness_skipping_reset_time":21600, "witness_idleness_time":7776000, "account_idleness_time":15552000} true
+
 ```
+{% endtab %}
 
-Параметры добавленные с 23 ХФ:
-
-```text
+{% tab title="23 ХФ" %}
+```
 update_chain_properties ЛОГИН {"claim_idleness_time":86400, "min_invite_balance":"10.000 GOLOS"} true
+
 ```
+{% endtab %}
+{% endtabs %}
 
 ## **Обновление ноды**
 

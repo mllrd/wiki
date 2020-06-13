@@ -46,25 +46,15 @@ sudo apt-get install docker-ce -y
 sudo wget -P ~/home/blockchain https://files.rudex.org/golos-classic/blockchain/block_log
 ```
 
-Создаем папку и добавляем файл c актуальными seed-нодами.
+Альтернативный адрес
 
 ```text
-mkdir ~/config && echo 'seed1.golos.blckchnd.com:30218
-golos1.lexai.host:4243
-golos2.lexai.host:4243
-95.216.200.20:3001
-seed1.vvk.pp.ru:2001
-seed.aleksw.space:4243
-116.202.162.207:2001
-94.130.24.42:2001
-78.47.150.171:4243
-95.217.7.47:4243
-95.217.133.230:4243' | sudo tee -a ~/config/seednodes
+sudo wget -P ~/home/blockchain https://files.golos.id/block_log
 ```
 
 ### **Генерируем ключи**
 
-Для облегчения получения ключей, вместо запуска ноды без них, использования команды `suggest_brain_key` в cli-wallet для генерирования, правки конфига и перезапуска ноды, можно сразу сгенерировать их [здесь](https://control.viz.world/tools/keys/).
+Для облегчения получения ключей, вместо запуска ноды без них, использования команды `suggest_brain_key` в cli-wallet для генерирования, правки конфига и перезапуска ноды, можно сразу сгенерировать их [здесь](https://control.viz.world/tools/keys/), либо [здесь](https://cyberway.ropox.app/cyberway/keygen).
 
 ![](https://lh6.googleusercontent.com/CiBEBEORRNyJRZDLDmgrPpqZ8k0yG6NR0doq88h26YaRpH5ioh-eOcFFT-ztCMgVA9u2PAAYnnBBOJ8wkKo10N2NYRPC7e5H3EZrdZiZOIQw_Az1lmUl6Tlut17nbMc5AroXUR5g)
 
@@ -76,7 +66,7 @@ seed.aleksw.space:4243
 ****В качестве `witness` запишем **логин без @** от своего аккаунта на Голосе**,** `private-key` тот что сгенерировали на шаге выше.
 
 ```text
-echo 'p2p-endpoint = 0.0.0.0:4243
+mkdir ~/config && echo 'p2p-endpoint = 0.0.0.0:4243
 webserver-thread-pool-size = 1
 webserver-http-endpoint = 0.0.0.0:8090
 webserver-ws-endpoint = 0.0.0.0:8091
@@ -117,10 +107,10 @@ appenders=stderr' | sudo tee -a ~/config/config.ini
 ```text
 sudo docker run -it \
     -p 4243:4243 \
-    -v ~/config:/etc/golosd \
+    -v ~/config/config.ini:/etc/golosd/config.ini \
     -v ~/home/blockchain:/var/lib/golosd/blockchain \
-    -v ~/w/:/golosd/ \
-    --name golosd vizlex/golos
+    -v ~/wallet:/golosd \
+    --name golosd golosblockchain/golos:latest
 ```
 
 Начнётся загрузка образа ноды и реплей \(наполнение файла оперативных данных `shared_memory.bin` из блоков\), который будет продолжаться от пары часов до суток \(в зависимости от производительности вашего сервера\). 
@@ -161,7 +151,7 @@ set_password 123456789
 unlock 123456789
 ```
 
-Импортируем в cli\_wallet наш приватный активный ключ аккаунта-делегата \(ключ, который смотреть тут [https://golos.id/@ЛОГИН/permissions](https://golos.id/@%D0%9B%D0%9E%D0%93%D0%98%D0%9D/permissions), начинается с цифры 5\)**.**
+Импортируем в cli\_wallet наш приватный активный ключ аккаунта-делегата \(ключ, который смотреть тут [https://golos.id/@lex/permissions](https://golos.id/@lex/permissions), начинается с цифры 5\)**.**
 
 ```text
 import_key 5Js............
@@ -286,7 +276,7 @@ sudo docker stop feed && sudo docker rm feed
 Удаляем образы для ноды и скрипта прайсфида
 
 ```text
-sudo docker rmi vizlex/golos-classic && sudo docker rmi vvk123/golos-witness-tools
+sudo docker rmi vizlex/golos && sudo docker rmi vvk123/golos-witness-tools
 ```
 
 Запускаем контейнер с новой версией
@@ -294,10 +284,10 @@ sudo docker rmi vizlex/golos-classic && sudo docker rmi vvk123/golos-witness-too
 ```text
 sudo docker run -it \
     -p 4243:4243 \
-    -v ~/config:/etc/golosd \
+    -v ~/config/config.ini:/etc/golosd/config.ini \
     -v ~/home/blockchain:/var/lib/golosd/blockchain \
-    -v ~/w/:/golosd/ \
-    --name golosd vizlex/golos
+    -v ~/wallet:/golosd \
+    --name golosd golosblockchain/golos:latest
 ```
 
 После появления логов вида `handle_block "Got 0 transactions on block 34563842 by ..."`, закрываем окно терминала. 

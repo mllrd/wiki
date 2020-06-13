@@ -198,7 +198,7 @@ quit
 
 ## **Публикация прайсфидов**
 
-Запускаем в докере ещё один контейнер, подробнее об этом удобном скрипте можно прочитать [здесь](../price-feed.md).
+Запускаем в докере ещё один контейнер, подробнее об этом удобном скрипте можно прочитать [здесь](https://wiki.golos.id/witnesses/price-feed).
 
 ```text
 sudo docker run -it \
@@ -236,7 +236,7 @@ sudo docker restart golosd
 
 Заходим на [https://golos.id/~witnesses](https://golos.id/~witnesses) и напротив своего делегата в столбце “Параметры” нажимаем на значок настроек **\(**описание каждого параметра возникает при наведении мышкой\).
 
-[Подробнее](../median-props.md) о значении медианных параметров. Изменить параметры можно и через [cli\_wallet](https://wiki.golos.id/witnesses/node/guide#rabota-s-cli-wallet) ноды, заменив логин и выполнив команду:
+[Подробнее](https://wiki.golos.id/witnesses/median-props) о значении медианных параметров. Изменить параметры можно и через [cli\_wallet](guide.md#rabota-s-cli-wallet) ноды, заменив логин и выполнив команду:
 
 {% tabs %}
 {% tab title="Базовые" %}
@@ -272,7 +272,7 @@ update_chain_properties ЛОГИН {"claim_idleness_time":86400, "min_invite_bal
 
 Ставим “пустой ключ” для ноды чтобы приостановить подпись блоков через параметры на странице [https://golos.id/@lex/witness](https://golos.id/@lex/witness) \(заменив на свой логин\).  
   
-****Или через [cli\_wallet](https://wiki.golos.id/witnesses/node/guide#rabota-s-cli-wallet) ноды командой
+****Или через [cli\_wallet](guide.md#rabota-s-cli-wallet) ноды командой
 
 ```text
 update_witness "ЛОГИН" "https://golos.id" GLS1111111111111111111111111111111114T1Anm true
@@ -319,7 +319,7 @@ sudo docker run -it \
 
 Возвращаем публичный ключ ноды GLS.............. который ранее сбрасывали через параметры на странице [https://golos.id/@lex/witness](https://golos.id/@lex/witness)  
   
-или через [cli\_wallet](https://wiki.golos.id/witnesses/node/guide#rabota-s-cli-wallet), заменив в команде ниже логин, ссылку на пост/аккаунт делегата + публичный ключ на свои:
+или через [cli\_wallet](guide.md#rabota-s-cli-wallet), заменив в команде ниже логин, ссылку на пост/аккаунт делегата + публичный ключ на свои:
 
 ```text
 update_witness "ЛОГИН" "https://golos.id/@ЛОГИН" GLS................. true

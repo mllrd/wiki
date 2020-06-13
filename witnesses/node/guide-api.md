@@ -4,40 +4,9 @@
 
 Ниже описан вариант установки API-ноды \(с хранением истории операций за неделю\). Для такой, оптимальный вариант - сервер с 16 Гб оперативной памяти и 80 Гб SSD накопителя.
 
-## Устанавливаем Docker
-
-```text
-sudo apt-get update
-```
-
-```text
-sudo apt-get install -y \
-    apt-transport-https \
-    ca-certificates \
-    curl \
-    software-properties-common
-```
-
-```text
-curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
-```
-
-```text
-sudo add-apt-repository \
-   "deb [arch=amd64] https://download.docker.com/linux/ubuntu \
-   $(lsb_release -cs) \
-   stable"
-```
-
-```text
-sudo apt-get update
-```
-
-```text
-sudo apt-get install docker-ce -y
-```
-
 ## Устанавливаем ноду
+
+Устанавливаем [Docker](https://wiki.golos.id/witnesses/node/guide#ustanavlivaem-docker) \(если его ещё нет\).
 
 Скачиваем большую часть блоков напрямую с сервера \(чтобы не тратить более суток на их получение и лишнюю нагрузку делегатских seed-нод\).
 
@@ -56,12 +25,16 @@ wget -P ~/home/blockchain --user=u229207-sub1 --password=dbxnfJ9nWlbi6XZE https:
 ```
 {% endtab %}
 
-{% tab title="Другие" %}
+{% tab title="Сервер 3" %}
 ```
 wget -P ~/home/blockchain https://files.rudex.org/golos-classic/blockchain/block_log
 
-wget -P ~/home/blockchain https://files.golos.id/block_log
+```
+{% endtab %}
 
+{% tab title="Севрер 4" %}
+```
+wget -P ~/home/blockchain https://files.golos.id/block_log
 ```
 {% endtab %}
 {% endtabs %}

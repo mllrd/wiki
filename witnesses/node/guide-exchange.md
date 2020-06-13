@@ -26,6 +26,11 @@ Endpoint for wallet HTTP RPC to listen on`
 `--rpc-http-allowip 127.0.0.1  
 Allows only specified IPs to connect to the HTTP endpoint`
 
+Возможно вместо запуска cli\_wallet с помощью screen будет удобно использовать режим демона, добавив опцию:
+
+`-d [ --daemon ]  
+Run the wallet in daemon mode`
+
 Устанавливаем пароль на кошелёк, разблокируем его, импортируем приватный активный ключ для осущестления переводов.
 
 ```text
@@ -35,11 +40,6 @@ unlock 123456
 
 import_key 5JX..........
 ```
-
-Возможно вместо запуска cli\_wallet с помощью Screen будет удобно использовать режим демона, добавив к команде опцию:
-
-`-d [ --daemon ]  
-Run the wallet in daemon mode`
 
 Примеры команд к cli\_wallet [описаны ниже](guide-exchange.md#primery-komand-k-cli_wallet-cherez-curl).
 
@@ -61,7 +61,7 @@ Run the wallet in daemon mode`
 
 Устанавливаем [Docker](https://wiki.golos.id/witnesses/node/guide#ustanavlivaem-docker) \(если его ещё нет\).
 
-Скачиваем файл цепочки блоков \(без него синхронизация от seed-нод занимает более суток\):
+Скачиваем файл цепочки блоков \(без него синхронизация от seed-нод блокчейна занимает более суток\).
 
 {% tabs %}
 {% tab title="Сервер в Финляндии" %}
@@ -92,7 +92,7 @@ wget -P ~/blockchain https://files.golos.id/block_log
 {% endtab %}
 {% endtabs %}
 
-Добавляем актуальный файл конфигурации ноды \(предварительно поменяв аккаунт отслеживания в строке `track-account` и срок хранения истории `history-blocks`, по умолчанию 403200 x 3 секунды = 14 дней\).
+Добавляем актуальный файл конфигурации ноды \(предварительно поменяв аккаунт отслеживания`track-account` и срок хранения истории `history-blocks`, по умолчанию 403200 x 3 сек. = 14 дней\).
 
 ```text
 echo 'webserver-thread-pool-size = 2
@@ -142,7 +142,7 @@ sudo docker run -d \
     --name golos-default golosblockchain/golos:latest
 ```
 
-Начнётся загрузка образа ноды и реплей \(наполнение `shared_memory.bin` из файла цепочки блоков, если запуск был не с полного бэкапа\).
+Начнётся загрузка образа ноды и реплей \(наполнение данных `shared_memory.bin` из файла цепочки блоков\), который будет продолжаться несколько часов в зависимости от производительности сервера.
 
 Посмотреть логи командой:
 

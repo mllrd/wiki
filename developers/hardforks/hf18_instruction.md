@@ -450,6 +450,10 @@ make -j $(nproc)
 sudo make install
 ```
 
+{% hint style="info" %}
+Если была нужна сборка **cli\_wallet**, последующие шаги не требуются, достаточно [запустить приложение](../../witnesses/node/guide-exchange.md#samostoyatelnaya-sborka-cli_wallet).
+{% endhint %}
+
 **6.** Создать пользователя с именем golosd для демона:
 
 ```text

@@ -79,6 +79,19 @@ wget -P ~/blockchain --user=u229207-sub1 --password=dbxnfJ9nWlbi6XZE https://u22
 
 ```
 {% endtab %}
+
+{% tab title="Сервер 3" %}
+```
+wget -P ~/blockchain https://files.rudex.org/golos-classic/blockchain/block_log
+
+```
+{% endtab %}
+
+{% tab title="Сервер 4" %}
+```
+wget -P ~/blockchain https://files.golos.id/block_log
+```
+{% endtab %}
 {% endtabs %}
 
 Полный бэкап \(без реплея, менее часа\):
@@ -107,7 +120,7 @@ rsync --progress -e 'ssh -p23' --recursive u229207-sub1@u229207-sub1.your-storag
 {% endtab %}
 {% endtabs %}
 
-Добавляем актуальный для бирж файл конфигурации ноды \(предварительно поменяв аккаунт отслеживания в строке `track-account` и срок хранения истории `history-blocks`, 403200 x 3 секунды = 14 дней\).
+Добавляем актуальный файл конфигурации ноды \(предварительно поменяв аккаунт отслеживания в строке `track-account` и срок хранения истории `history-blocks`, по умолчанию 403200 x 3 секунды = 14 дней\).
 
 ```text
 echo 'webserver-thread-pool-size = 2

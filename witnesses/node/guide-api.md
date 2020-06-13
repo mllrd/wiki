@@ -39,17 +39,32 @@ sudo apt-get install docker-ce -y
 
 ## Устанавливаем ноду
 
-Скачиваем большую часть блоков напрямую с сервера \(чтобы не тратить сутки-двое на их получение и лишнюю нагрузку делегатских seed-нод\).
+Скачиваем большую часть блоков напрямую с сервера \(чтобы не тратить более суток на их получение и лишнюю нагрузку делегатских seed-нод\).
 
+{% tabs %}
+{% tab title="Сервер в Финляндии" %}
 ```text
-sudo wget -P ~/home/blockchain https://files.rudex.org/golos-classic/blockchain/block_log
+wget -P ~/home/blockchain --user=u233417-sub1 --password=xCbthClwoWSVGIt1 https://u233417-sub1.your-storagebox.de/block_log
+
 ```
+{% endtab %}
 
-Альтернативный адрес
-
+{% tab title="Сервер в Германии" %}
 ```text
-sudo wget -P ~/home/blockchain https://files.golos.id/block_log
+wget -P ~/home/blockchain --user=u229207-sub1 --password=dbxnfJ9nWlbi6XZE https://u229207-sub1.your-storagebox.de/block_log
+
 ```
+{% endtab %}
+
+{% tab title="Другие" %}
+```
+wget -P ~/home/blockchain https://files.rudex.org/golos-classic/blockchain/block_log
+
+wget -P ~/home/blockchain https://files.golos.id/block_log
+
+```
+{% endtab %}
+{% endtabs %}
 
 Добавляем конфиг ноды \(указанные в нём `202800` блоков = неделя\). Какие плагины нужны для ваших целей, можно уточнить в чате делегатов [https://t.me/golos\_witnesses](https://t.me/golos_witnesses)
 

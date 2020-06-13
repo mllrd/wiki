@@ -61,9 +61,7 @@ Run the wallet in daemon mode`
 
 Устанавливаем [Docker](https://wiki.golos.id/witnesses/node/guide#ustanavlivaem-docker) \(если его ещё нет\).
 
-Скачиваем файл цепочки блоков \(без него синхронизация от seed-нод занимает около 2 суток\), либо полный бэкап \(с ним запуск займёт менее часа\).  
-  
-Только цепочка блоков \(реплей займёт несколько часов\):
+Скачиваем файл цепочки блоков \(без него синхронизация от seed-нод занимает более суток\):
 
 {% tabs %}
 {% tab title="Сервер в Финляндии" %}
@@ -90,32 +88,6 @@ wget -P ~/blockchain https://files.rudex.org/golos-classic/blockchain/block_log
 {% tab title="Сервер 4" %}
 ```
 wget -P ~/blockchain https://files.golos.id/block_log
-```
-{% endtab %}
-{% endtabs %}
-
-Полный бэкап \(без реплея, менее часа\):
-
-{% tabs %}
-{% tab title="Сервер в Финляндии" %}
-```text
-mkdir -p ~/blockchain
-
-rsync --progress -e 'ssh -p23' --recursive u233417-sub1@u233417-sub1.your-storagebox.de: ~/blockchain/
-
-Пароль xCbthClwoWSVGIt1
-
-```
-{% endtab %}
-
-{% tab title="Сервер в Германии" %}
-```
-mkdir -p ~/blockchain
-
-rsync --progress -e 'ssh -p23' --recursive u229207-sub1@u229207-sub1.your-storagebox.de: ~/blockchain/
-
-Пароль dbxnfJ9nWlbi6XZE
-
 ```
 {% endtab %}
 {% endtabs %}
@@ -158,7 +130,7 @@ level=none
 appenders=stderr' | sudo tee -a ~/config.ini
 ```
 
-Запускаем контейнер
+Запускаем контейнер:
 
 ```text
 sudo docker run -d \
@@ -181,7 +153,7 @@ sudo docker logs -f --tail 50 golos-default
 Запуск приложения cli\_wallet внутри контейнера ноды:
 
 ```text
-sudo docker exec -it golos-default cli_wallet \
+sudo docker exec -ti -d golos-default cli_wallet \
   --wallet="/golosd/wallet.json" \
   --server-rpc-endpoint="ws://localhost:8091" \
   --rpc-http-endpoint="0.0.0.0:8094" \

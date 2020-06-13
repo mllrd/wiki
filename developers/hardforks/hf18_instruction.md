@@ -410,17 +410,19 @@ sudo apt-get install -y \
         python3-dev \
         python3-pip \
         runit
-        
+```
+
+```text
 sudo pip3 install gcovr
 ```
 
 **3.** В отведенное для репозитория место скопировать исходные файлы из github, используя следующие команды:
 
 ```text
-git clone https://github.com/golos-blockchain/golos.git
+git clone https://github.com/golos-blockchain/golos.git && cd golos
+```
 
-cd golos
-
+```text
 git submodule update --init --recursive -f
 ```
 
@@ -429,10 +431,10 @@ git submodule update --init --recursive -f
 **4.** Задать значения макро-переменных и сконфигурировать проект, используя следующие команды:
 
 ```text
-mkdir build
+mkdir build && cd build
+```
 
-cd build
-
+```text
 cmake \
     -DCMAKE_BUILD_TYPE=Release \
     -DBUILD_GOLOS_TESTNET=FALSE \
@@ -445,9 +447,7 @@ cmake \
 **5.** Построить проект с установкой демона в `/usr/local/`, исполнив:
 
 ```text
-make -j $(nproc)
-
-sudo make install
+make -j $(nproc) && sudo make install
 ```
 
 {% hint style="info" %}

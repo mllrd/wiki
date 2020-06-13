@@ -57,12 +57,16 @@ wget -P ~/home/blockchain --user=u229207-sub1 --password=dbxnfJ9nWlbi6XZE https:
 ```
 {% endtab %}
 
-{% tab title="Другие" %}
+{% tab title="Сервер 3" %}
 ```
 wget -P ~/home/blockchain https://files.rudex.org/golos-classic/blockchain/block_log
 
-wget -P ~/home/blockchain https://files.golos.id/block_log
+```
+{% endtab %}
 
+{% tab title="Сервер 4" %}
+```
+wget -P ~/home/blockchain https://files.golos.id/block_log
 ```
 {% endtab %}
 {% endtabs %}

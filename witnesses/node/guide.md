@@ -40,7 +40,9 @@ sudo apt-get install docker-ce -y
 
 ## Устанавливаем ноду
 
-Скачиваем большую часть блоков напрямую с сервера \(чтобы не тратить более суток на их получение и лишнюю нагрузку делегатских seed-нод\).
+Скачиваем файл цепочки блоков \(без него синхронизация от seed-нод занимает около 2 суток\), либо полный бэкап \(с ним запуск займёт менее часа\).  
+  
+Только цепочка блоков \(реплей займёт несколько часов\):
 
 {% tabs %}
 {% tab title="Сервер в Финляндии" %}
@@ -67,6 +69,32 @@ wget -P ~/home/blockchain https://files.rudex.org/golos-classic/blockchain/block
 {% tab title="Сервер 4" %}
 ```
 wget -P ~/home/blockchain https://files.golos.id/block_log
+```
+{% endtab %}
+{% endtabs %}
+
+Полный бэкап \(без реплея, менее часа\):
+
+{% tabs %}
+{% tab title="Сервер в Финляндии" %}
+```text
+mkdir -p ~/home/blockchain
+
+rsync --progress -e 'ssh -p23' --recursive u233417-sub1@u233417-sub1.your-storagebox.de: ~/home/blockchain/
+
+Пароль xCbthClwoWSVGIt1
+
+```
+{% endtab %}
+
+{% tab title="Сервер в Германии" %}
+```
+mkdir -p ~/home/blockchain
+
+rsync --progress -e 'ssh -p23' --recursive u229207-sub1@u229207-sub1.your-storagebox.de: ~/home/blockchain/
+
+Пароль dbxnfJ9nWlbi6XZE
+
 ```
 {% endtab %}
 {% endtabs %}

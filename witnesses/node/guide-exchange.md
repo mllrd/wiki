@@ -92,7 +92,7 @@ wget -P ~/blockchain https://files.golos.id/block_log
 {% endtab %}
 {% endtabs %}
 
-Добавляем актуальный файл конфигурации ноды \(предварительно поменяв аккаунт отслеживания`track-account` и срок хранения истории `history-blocks`, по умолчанию 403200 x 3 сек. = 14 дней\).
+Добавляем актуальный файл конфигурации ноды \(предварительно поменяв аккаунт отслеживания`track-account` и срок хранения истории `history-blocks`, 864000 блоков x 3 секунды = месяц\).
 
 ```text
 echo 'webserver-thread-pool-size = 2
@@ -109,9 +109,9 @@ min-free-shared-file-size = 500M
 inc-shared-file-size = 2G
 block-num-check-free-size = 1000
 plugin = chain p2p json_rpc webserver network_broadcast_api database_api operation_history account_history account_by_key
-track-account = rudex
 history-start-block = 37000000
-history-blocks = 403200
+history-blocks = 864000
+track-account = rudex
 clear-votes-before-block = 4294967295
 store-account-metadata = false
 replay-if-corrupted = true
@@ -139,7 +139,7 @@ sudo docker run -d \
     -p 127.0.0.1:8094:8094 \
     -v ~/config.ini:/etc/golosd/config.ini \
     -v ~/blockchain:/var/lib/golosd/blockchain \
-    --name golos-default golosblockchain/golos:latest
+    --name golosd golosblockchain/golos:latest
 ```
 
 Начнётся загрузка образа ноды и реплей \(наполнение данных `shared_memory.bin` из файла цепочки блоков\), который будет продолжаться несколько часов в зависимости от производительности сервера.
@@ -147,13 +147,13 @@ sudo docker run -d \
 Посмотреть логи командой:
 
 ```text
-sudo docker logs -f --tail 50 golos-default
+sudo docker logs -f --tail 50 golosd
 ```
 
 Запуск приложения cli\_wallet внутри контейнера ноды:
 
 ```text
-sudo docker exec -ti -d golos-default cli_wallet \
+sudo docker exec -ti -d golosd cli_wallet \
   --wallet="/golosd/wallet.json" \
   --server-rpc-endpoint="ws://localhost:8091" \
   --rpc-http-endpoint="0.0.0.0:8094" \

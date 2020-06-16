@@ -47,14 +47,14 @@ sudo apt-get install docker-ce -y
 {% tabs %}
 {% tab title="Сервер в Финляндии" %}
 ```text
-wget -P ~/home/blockchain --user=u233417-sub1 --password=xCbthClwoWSVGIt1 https://u233417-sub1.your-storagebox.de/block_log
+wget -P ~/home/blockchain --user=u233417-sub1 --password=xCbthClwoWSVGIt1 https://u233417-sub1.your-storagebox.de/block_log.index https://u233417-sub1.your-storagebox.de/block_log
 
 ```
 {% endtab %}
 
 {% tab title="Сервер в Германии" %}
 ```text
-wget -P ~/home/blockchain --user=u229207-sub1 --password=dbxnfJ9nWlbi6XZE https://u229207-sub1.your-storagebox.de/block_log
+wget -P ~/home/blockchain --user=u229207-sub1 --password=dbxnfJ9nWlbi6XZE https://u229207-sub1.your-storagebox.de/block_log.index https://u229207-sub1.your-storagebox.de/block_log
 
 ```
 {% endtab %}
@@ -73,27 +73,19 @@ wget -P ~/home/blockchain https://files.golos.id/block_log
 {% endtab %}
 {% endtabs %}
 
-Полный бэкап \(без реплея, менее часа\):
+Полный бэкап \(реплей не требуется, менее часа\):
 
 {% tabs %}
 {% tab title="Сервер в Финляндии" %}
 ```text
-mkdir -p ~/home/blockchain
-
-rsync --progress -e 'ssh -p23' --recursive u233417-sub1@u233417-sub1.your-storagebox.de: ~/home/blockchain/
-
-Пароль xCbthClwoWSVGIt1
+wget -P ~/home/blockchain --user=u233417-sub1 --password=xCbthClwoWSVGIt1 https://u233417-sub1.your-storagebox.de/block_log.index https://u233417-sub1.your-storagebox.de/block_log https://u233417-sub1.your-storagebox.de/shared_memory.bin
 
 ```
 {% endtab %}
 
 {% tab title="Сервер в Германии" %}
 ```
-mkdir -p ~/home/blockchain
-
-rsync --progress -e 'ssh -p23' --recursive u229207-sub1@u229207-sub1.your-storagebox.de: ~/home/blockchain/
-
-Пароль dbxnfJ9nWlbi6XZE
+wget -P ~/home/blockchain --user=u229207-sub1 --password=dbxnfJ9nWlbi6XZE https://u229207-sub1.your-storagebox.de/block_log.index https://u229207-sub1.your-storagebox.de/block_log https://u229207-sub1.your-storagebox.de/shared_memory.bin
 
 ```
 {% endtab %}

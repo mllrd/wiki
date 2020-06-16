@@ -66,14 +66,14 @@ import_key 5JX..........
 {% tabs %}
 {% tab title="Сервер в Финляндии" %}
 ```text
-wget -P ~/blockchain --user=u233417-sub1 --password=xCbthClwoWSVGIt1 https://u233417-sub1.your-storagebox.de/block_log
+wget -P ~/blockchain --user=u233417-sub1 --password=xCbthClwoWSVGIt1 https://u233417-sub1.your-storagebox.de/block_log.index https://u233417-sub1.your-storagebox.de/block_log
 
 ```
 {% endtab %}
 
 {% tab title="Сервер в Германии" %}
 ```text
-wget -P ~/blockchain --user=u229207-sub1 --password=dbxnfJ9nWlbi6XZE https://u229207-sub1.your-storagebox.de/block_log
+wget -P ~/blockchain --user=u229207-sub1 --password=dbxnfJ9nWlbi6XZE https://u229207-sub1.your-storagebox.de/block_log.index https://u229207-sub1.your-storagebox.de/block_log
 
 ```
 {% endtab %}

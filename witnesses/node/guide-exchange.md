@@ -184,6 +184,12 @@ curl --data '{"jsonrpc": "2.0", "method": "import_key", "params": ["5JVFFWRLwz6J
 curl --data '{"jsonrpc": "2.0", "method": "list_my_accounts", "params": [], "id": 1}' http://127.0.0.1:8094
 ```
 
+Получение информации из блока:
+
+```text
+curl --data '{"jsonrpc": "2.0", "method": "call", "params": ["database_api","get_block",["30000000"]], "id": 1}' https://api.aleksw.space
+```
+
 Получение информации об аккаунте:
 
 ```text

@@ -18,10 +18,10 @@
 
 В нём указаны адреса для JSON-RPC запросов через WebSocket over SSL, для запросов через HTTPS просто замените `wss` на `https`и уберите `ws` в конце.
 
-Пример настройки для работы с нодой `https://api.golos.blckchnd.com/`:
+Пример настройки для работы с нодой `https://api-full.golos.id`:
 
 ```javascript
-var api_gate='https://api.golos.blckchnd.com/';
+var api_gate='https://api-full.golos.id';
 golos.config.set('websocket',api_gate);
 ```
 
@@ -460,7 +460,7 @@ golos.broadcast.proposalDelete(active_key,proposal_author,proposal_title,account
 Пример для WebSocket соединения:
 
 ```javascript
-var api_gate='wss://golos.lexa.host/ws';
+var api_gate='wss://golos.lexai.host/ws';
 var latency_start=new Date().getTime();
 var latency=-1;
 var socket = new WebSocket(api_gate);
@@ -483,7 +483,7 @@ socket.onopen=function(){
 Пример для HTTP соединения:
 
 ```javascript
-var api_gate='https://golos.lexa.host/';
+var api_gate='https://golos.lexai.host';
 var latency_start=new Date().getTime();
 var latency=-1;
 var xhr = new XMLHttpRequest();

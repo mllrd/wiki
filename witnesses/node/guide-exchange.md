@@ -139,6 +139,7 @@ sudo docker run -d \
     -p 127.0.0.1:8094:8094 \
     -v ~/config.ini:/etc/golosd/config.ini \
     -v ~/blockchain:/var/lib/golosd/blockchain \
+    -v ~/wallet:/golosd \
     --name golosd golosblockchain/golos:latest
 ```
 

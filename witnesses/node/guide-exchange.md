@@ -7,13 +7,13 @@
 Скачиваем cli\_wallet и устанавливаем права на файл:
 
 ```text
-wget https://files.rudex.org/golos-classic/cli_wallet && chmod +x cli_wallet
+wget https://files.golos.id/cli_wallet && chmod +x cli_wallet
 ```
 
 Запускаем cli\_wallet выбрав одну из публичных [API-нод](https://golos.id/nodes).
 
 ```text
-./cli_wallet -s wss://api.aleksw.space/ws --rpc-http-endpoint 127.0.0.1:8094 --rpc-http-allowip 127.0.0.1
+./cli_wallet -s wss://api-full.golos.id/ws --rpc-http-endpoint 127.0.0.1:8094 --rpc-http-allowip 127.0.0.1
 ```
 
 Все **параметры запуска** cli\_wallet можно посмотреть командой`./cli_wallet --help`
@@ -52,7 +52,7 @@ import_key 5JX..........
 ```text
 /usr/local/bin/cli_wallet \
   --wallet="/var/lib/golosd/wallet.json" \
-  --server-rpc-endpoint="wss://api.aleksw.space/ws" \
+  --server-rpc-endpoint="wss://api-full.golos.id/ws" \
   --rpc-http-endpoint="127.0.0.1:8094" \
   --rpc-http-allowip="127.0.0.1"
 ```
@@ -212,7 +212,7 @@ curl --data '{"jsonrpc": "2.0", "method": "get_block", "params": ["30000000"], "
 или альтернативный вариант напрямую с публичной ноды:
 
 ```text
-curl --data '{"jsonrpc": "2.0", "method": "call", "params": ["database_api","get_block",["38397453"]], "id":"1"}' https://api.aleksw.space
+curl --data '{"jsonrpc": "2.0", "method": "call", "params": ["database_api","get_block",["38397453"]], "id":"1"}' https://api-full.golos.id
 ```
 
 Описание команд к cli\_wallet также есть [здесь](../../developers/api/cli-wallet.md) или можно сформировать формат пользуясь сервисом [https://ropox.app/steemjs/api/](https://ropox.app/steemjs/api/)

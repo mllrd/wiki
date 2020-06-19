@@ -9,7 +9,7 @@
 
 Скомпилированные бинарники для v0.23.0:
 
-* golosd: [https://files.rudex.org/golos-classic/golosd](https://files.rudex.org/golos-classic/golosd)
-* cli\_wallet: [https://files.rudex.org/golos-classic/cli\_wallet](https://files.rudex.org/golos-classic/cli_wallet)
+* golosd: [https://files.golos.id/golosd](https://files.golos.id/golosd)
+* cli\_wallet: [https://files.golos.id/cli\_wallet](https://files.golos.id/cli_wallet)
 {% endhint %}
 

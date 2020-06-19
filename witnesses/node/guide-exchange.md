@@ -2,15 +2,13 @@
 
 ## Использование готового cli\_wallet
 
-> На примере собранного из репозитария [v0.23.0](https://github.com/golos-blockchain/golos/tree/golos-v0.23.0) командой биржи RuDEX.
-
 Скачиваем cli\_wallet и устанавливаем права на файл:
 
 ```text
 wget https://files.golos.id/cli_wallet && chmod +x cli_wallet
 ```
 
-Запускаем cli\_wallet выбрав одну из публичных [API-нод](https://golos.id/nodes).
+Запускаем cli\_wallet \(список альтернативных публичных [API-нод](https://golos.id/nodes)\).
 
 ```text
 ./cli_wallet -s wss://api-full.golos.id/ws --rpc-http-endpoint 127.0.0.1:8094 --rpc-http-allowip 127.0.0.1
@@ -78,14 +76,7 @@ wget -P ~/blockchain --user=u229207-sub1 --password=dbxnfJ9nWlbi6XZE https://u22
 ```
 {% endtab %}
 
-{% tab title="Сервер 3" %}
-```
-wget -P ~/blockchain https://files.rudex.org/golos-classic/blockchain/block_log
-
-```
-{% endtab %}
-
-{% tab title="Сервер 4" %}
+{% tab title="Альтернативный" %}
 ```
 wget -P ~/blockchain https://files.golos.id/block_log
 ```

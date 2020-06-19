@@ -76,7 +76,7 @@
 
 ### Ввод и вывод токенов
 
-Полученные токены Голос \(GOLOS\) или Золотой \(GBG\) Вы можете вывести на биржи: [RuDEX](https://rudex.org/), [Kuna](https://kuna.io/), [Steem-Engine](https://steem-engine.com/?p=market&t=GOLOSP). Доступен и обратный процесс получения токенов с ваших аккаунтов на этих биржах.
+Токены Голос \(GOLOS\) можно купить/продать через биржи указанные на [https://golos.id/exchanges](https://golos.id/exchanges) \(пока это RuDEX, Livecoin, Hive-Engine, Steem-Engine\). 
 
 Также возможен обмен токенов Голос \(GOLOS\) на токены Золотой \(GBG\) и обратно [через внутренний рынок](https://golos.id/market).
 

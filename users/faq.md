@@ -43,7 +43,7 @@
 
 ## **На каких биржах торгуются токены?**
 
-На данный момент проект поддержан биржами: [RuDEX](https://rudex.org/), [Kuna](https://kuna.io/), [Steem-Engine](https://steem-engine.com/?p=market&t=GOLOSP), [Hive-Engine](https://hive-engine.com/), в процессе восстановление торгов на [Livecoin](https://www.livecoin.net/) и листинг на других биржах.
+На данный момент проект поддержан биржами: RuDEX, Livecoin, Hive-Engine, Steem-Engine, в процессе листинг и на других биржах. Актуальный список доступен на [https://golos.id/exchanges](https://golos.id/exchanges)
 
 Также возможен обмен токенов Голос на Золотые через [внутренний рынок](https://golos.id/market).
 

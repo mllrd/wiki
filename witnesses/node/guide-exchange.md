@@ -185,12 +185,6 @@ curl --data '{"jsonrpc": "2.0", "method": "import_key", "params": ["5JVFFWRLwz6J
 curl --data '{"jsonrpc": "2.0", "method": "list_my_accounts", "params": [], "id": 1}' http://127.0.0.1:8094
 ```
 
-Получение информации из блока:
-
-```text
-curl --data '{"jsonrpc": "2.0", "method": "call", "params": ["database_api","get_block",["30000000"]], "id": 1}' https://api.aleksw.space
-```
-
 Получение информации об аккаунте:
 
 ```text
@@ -209,5 +203,17 @@ curl --data '{"jsonrpc": "2.0", "method": "transfer", "params": ["rudex","test",
 curl --data '{"jsonrpc": "2.0", "method": "filter_account_history", "params": ["rudex",-1,20,{"direction":"receiver","select_ops":["transfer_operation"]}], "id": 1}' http://127.0.0.1:8094
 ```
 
-Список команд к cli\_wallet также есть [здесь](../../developers/api/cli-wallet.md) или сформировать формат пользуясь сервисом [https://ropox.app/steemjs/api/](https://ropox.app/steemjs/api/)
+Получение информации из блока:
+
+```text
+curl --data '{"jsonrpc": "2.0", "method": "get_block", "params": ["30000000"], "id": 1}' http://127.0.0.1:8094
+```
+
+или альтернативный вариант напрямую с публичной ноды:
+
+```text
+curl --data '{"jsonrpc": "2.0", "method": "call", "params": ["database_api","get_block",["38397453"]], "id":"1"}' https://api.aleksw.space
+```
+
+Описание команд к cli\_wallet также есть [здесь](../../developers/api/cli-wallet.md) или можно сформировать формат пользуясь сервисом [https://ropox.app/steemjs/api/](https://ropox.app/steemjs/api/)
 

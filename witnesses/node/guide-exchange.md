@@ -8,7 +8,7 @@
 wget https://files.golos.id/cli_wallet && chmod +x cli_wallet
 ```
 
-Запускаем cli\_wallet \(список альтернативных публичных [API-нод](https://golos.id/nodes)\).
+Запускаем cli\_wallet \(список альтернативных публичных [API-нод](https://golos.id/nodes)\):
 
 ```text
 ./cli_wallet -s wss://api-full.golos.id/ws --rpc-http-endpoint 127.0.0.1:8094 --rpc-http-allowip 127.0.0.1
@@ -45,7 +45,7 @@ import_key 5JX..........
 
 Собрать cli\_wallet можно и с исходного кода за 5 начальных шагов [этой инструкции](../../developers/hardforks/hf18_instruction.md#razdel_4-iznachalnaya-ustanovka-blokcheina).
 
-После чего подключиться к cli\_wallet командой:
+Подключиться к cli\_wallet \(список альтернативных публичных [API-нод](https://golos.id/nodes)\):
 
 ```text
 /usr/local/bin/cli_wallet \
@@ -188,22 +188,22 @@ curl --data '{"jsonrpc": "2.0", "method": "get_account", "params": ["rudex"], "i
 curl --data '{"jsonrpc": "2.0", "method": "transfer", "params": ["rudex","test","1.000 GOLOS","",true], "id": 1}' http://127.0.0.1:8094
 ```
 
-Запрос истории последних 20 трансферов где получателем был аккаунт \(иные варианты фильтра истории [описаны тут](../../developers/hardforks/sf18.4_release.md#filtraciya-zaprashivaemoi-informacii-ob-operaciyakh-iz-istorii-akkaunta)\):
+Запрос истории последних 50 трансферов где получателем был аккаунт \(иные варианты фильтра истории [описаны тут](../../developers/hardforks/sf18.4_release.md#filtraciya-zaprashivaemoi-informacii-ob-operaciyakh-iz-istorii-akkaunta)\):
 
 ```text
-curl --data '{"jsonrpc": "2.0", "method": "filter_account_history", "params": ["rudex",-1,20,{"direction":"receiver","select_ops":["transfer_operation"]}], "id": 1}' http://127.0.0.1:8094
+curl --data '{"jsonrpc": "2.0", "method": "filter_account_history", "params": ["rudex",-1,50,{"direction":"receiver","select_ops":["transfer_operation"]}], "id": 1}' http://127.0.0.1:8094
 ```
 
-Получение информации из блока:
+Получение информации об операциях в блоке:
 
 ```text
 curl --data '{"jsonrpc": "2.0", "method": "get_block", "params": ["30000000"], "id": 1}' http://127.0.0.1:8094
 ```
 
-или альтернативный вариант напрямую с публичной ноды:
+Получение операций из блока вместе с виртуальными и trx\_id:
 
 ```text
-curl --data '{"jsonrpc": "2.0", "method": "call", "params": ["database_api","get_block",["38397453"]], "id":"1"}' https://api-full.golos.id
+curl --data '{"jsonrpc": "2.0", "method": "get_ops_in_block", "params": ["30000000","false"], "id": 1}' http://127.0.0.1:8094
 ```
 
 Описание команд к cli\_wallet также есть [здесь](../../developers/api/cli-wallet.md) или можно сформировать формат пользуясь сервисом [https://ropox.app/steemjs/api/](https://ropox.app/steemjs/api/)

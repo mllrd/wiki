@@ -344,7 +344,8 @@ _**get\_miner\_queue**_
 ## Использование`curl`
 
 Простой способ использовать команду - с помощью`curl`, используя следующий формат:  
-`curl --data '{"jsonrpc": "2.0", <Параметры>}' https://api-full.golos.id`
+  
+`curl --data '{"jsonrpc": "2.0", <Параметры>}' https://golos.lexai.host`
 
 Историческая справка
 

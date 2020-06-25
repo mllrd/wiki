@@ -11,23 +11,38 @@
 Скачиваем большую часть блоков напрямую с сервера \(чтобы не тратить более суток на их получение и лишнюю нагрузку делегатских seed-нод\).
 
 {% tabs %}
-{% tab title="Сервер в Финляндии" %}
-```text
-wget -P ~/home/blockchain --user=u233417-sub1 --password=xCbthClwoWSVGIt1 https://u233417-sub1.your-storagebox.de/block_log.index https://u233417-sub1.your-storagebox.de/block_log
+{% tab title="Германия 1" %}
+```
+wget -P ~/home/blockchain --user=u235829-sub1 --password=r1CUeZFmE8PXPRAK https://u235829-sub1.your-storagebox.de/block_log.index https://u235829-sub1.your-storagebox.de/block_log
 
 ```
 {% endtab %}
 
-{% tab title="Сервер в Германии" %}
+{% tab title="Финляндия 1" %}
+```
+wget -P ~/home/blockchain --user=u236061-sub1 --password=VeutCiSXSdTlkNDg https://u236061-sub1.your-storagebox.de/block_log.index https://u236061-sub1.your-storagebox.de/block_log
+
+```
+{% endtab %}
+
+{% tab title="Германия 2" %}
 ```text
 wget -P ~/home/blockchain --user=u229207-sub1 --password=dbxnfJ9nWlbi6XZE https://u229207-sub1.your-storagebox.de/block_log.index https://u229207-sub1.your-storagebox.de/block_log
 
 ```
 {% endtab %}
 
-{% tab title="Альтернативный" %}
+{% tab title="Финляндия 2" %}
+```text
+wget -P ~/home/blockchain --user=u233417-sub1 --password=xCbthClwoWSVGIt1 https://u233417-sub1.your-storagebox.de/block_log.index https://u233417-sub1.your-storagebox.de/block_log
+
 ```
-wget -P ~/home/blockchain https://files.golos.id/block_log
+{% endtab %}
+
+{% tab title="Альтернативный " %}
+```
+wget -P ~/home/blockchain https://files.golos.id/block_log.index https://files.golos.id/block_log
+
 ```
 {% endtab %}
 {% endtabs %}

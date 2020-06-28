@@ -11,7 +11,7 @@ wget https://files.golos.id/cli_wallet && chmod +x cli_wallet
 Запускаем cli\_wallet \(список альтернативных публичных [API-нод](https://golos.id/nodes)\):
 
 ```text
-./cli_wallet -s wss://api-full.golos.id/ws --rpc-http-endpoint 127.0.0.1:8094 --rpc-http-allowip 127.0.0.1
+./cli_wallet -s wss://api.golos.id/ws --rpc-http-endpoint 127.0.0.1:8094 --rpc-http-allowip 127.0.0.1
 ```
 
 Все **параметры запуска** cli\_wallet можно посмотреть командой`./cli_wallet --help`
@@ -50,7 +50,7 @@ import_key 5JX..........
 ```text
 /usr/local/bin/cli_wallet \
   --wallet="/var/lib/golosd/wallet.json" \
-  --server-rpc-endpoint="wss://api-full.golos.id/ws" \
+  --server-rpc-endpoint="wss://api.golos.id/ws" \
   --rpc-http-endpoint="127.0.0.1:8094" \
   --rpc-http-allowip="127.0.0.1"
 ```

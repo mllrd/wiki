@@ -13,14 +13,14 @@
 {% tabs %}
 {% tab title="Германия 1" %}
 ```
-wget -P ~/home/blockchain --user=u235829-sub1 --password=r1CUeZFmE8PXPRAK https://u235829-sub1.your-storagebox.de/block_log.index https://u235829-sub1.your-storagebox.de/block_log
+wget -P ~/home/blockchain --user=u236673-sub1 --password=I9NvJH2OGn9TXhXK https://u236673-sub1.your-storagebox.de/block_log.index https://u236673-sub1.your-storagebox.de/block_log
 
 ```
 {% endtab %}
 
 {% tab title="Финляндия 1" %}
 ```
-wget -P ~/home/blockchain --user=u236061-sub1 --password=VeutCiSXSdTlkNDg https://u236061-sub1.your-storagebox.de/block_log.index https://u236061-sub1.your-storagebox.de/block_log
+wget -P ~/home/blockchain --user=u236672-sub1 --password=w9hDWgYLgZPwgqmt https://u236672-sub1.your-storagebox.de/block_log.index https://u236672-sub1.your-storagebox.de/block_log
 
 ```
 {% endtab %}
@@ -35,13 +35,6 @@ wget -P ~/home/blockchain --user=u229207-sub1 --password=dbxnfJ9nWlbi6XZE https:
 {% tab title="Финляндия 2" %}
 ```text
 wget -P ~/home/blockchain --user=u233417-sub1 --password=xCbthClwoWSVGIt1 https://u233417-sub1.your-storagebox.de/block_log.index https://u233417-sub1.your-storagebox.de/block_log
-
-```
-{% endtab %}
-
-{% tab title="Альтернативный " %}
-```
-wget -P ~/home/blockchain https://files.golos.id/block_log.index https://files.golos.id/block_log
 
 ```
 {% endtab %}

@@ -11,7 +11,7 @@ wget https://files.golos.id/cli_wallet && chmod +x cli_wallet
 Запускаем cli\_wallet \(список альтернативных публичных [API-нод](https://golos.id/nodes)\):
 
 ```text
-./cli_wallet -s wss://api.golos.id/ws --rpc-http-endpoint 127.0.0.1:8094 --rpc-http-allowip 127.0.0.1
+./cli_wallet -s wss://api-full.golos.id/ws --rpc-http-endpoint 127.0.0.1:8094 --rpc-http-allowip 127.0.0.1
 ```
 
 Все **параметры запуска** cli\_wallet можно посмотреть командой`./cli_wallet --help`
@@ -50,7 +50,7 @@ import_key 5JX..........
 ```text
 /usr/local/bin/cli_wallet \
   --wallet="/var/lib/golosd/wallet.json" \
-  --server-rpc-endpoint="wss://api.golos.id/ws" \
+  --server-rpc-endpoint="wss://api-full.golos.id/ws" \
   --rpc-http-endpoint="127.0.0.1:8094" \
   --rpc-http-allowip="127.0.0.1"
 ```
@@ -64,14 +64,14 @@ import_key 5JX..........
 {% tabs %}
 {% tab title="Германия 1" %}
 ```
-wget -P ~/blockchain --user=u236673-sub1 --password=I9NvJH2OGn9TXhXK https://u236673-sub1.your-storagebox.de/block_log.index https://u236673-sub1.your-storagebox.de/block_log
+wget -P ~/blockchain --user=u237308-sub1 --password=3oOk8579Ff8ceKdy https://u237308-sub1.your-storagebox.de/block_log.index https://u237308-sub1.your-storagebox.de/block_log
 
 ```
 {% endtab %}
 
 {% tab title="Финляндия 1" %}
 ```
-wget -P ~/blockchain --user=u236672-sub1 --password=w9hDWgYLgZPwgqmt https://u236672-sub1.your-storagebox.de/block_log.index https://u236672-sub1.your-storagebox.de/block_log
+wget -P ~/blockchain --user=u237310-sub1 --password=wTfnAGV6HTJC4D2m https://u237310-sub1.your-storagebox.de/block_log.index https://u237310-sub1.your-storagebox.de/block_log
 
 ```
 {% endtab %}

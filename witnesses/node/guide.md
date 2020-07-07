@@ -47,14 +47,14 @@ sudo apt-get install docker-ce -y
 {% tabs %}
 {% tab title="Германия 1" %}
 ```
-wget -P ~/home/blockchain --user=u236673-sub1 --password=I9NvJH2OGn9TXhXK https://u236673-sub1.your-storagebox.de/block_log.index https://u236673-sub1.your-storagebox.de/block_log
+wget -P ~/home/blockchain --user=u237308-sub1 --password=3oOk8579Ff8ceKdy https://u237308-sub1.your-storagebox.de/block_log.index https://u237308-sub1.your-storagebox.de/block_log
 
 ```
 {% endtab %}
 
 {% tab title="Финляндия 1" %}
 ```
-wget -P ~/home/blockchain --user=u236672-sub1 --password=w9hDWgYLgZPwgqmt https://u236672-sub1.your-storagebox.de/block_log.index https://u236672-sub1.your-storagebox.de/block_log
+wget -P ~/home/blockchain --user=u237310-sub1 --password=wTfnAGV6HTJC4D2m https://u237310-sub1.your-storagebox.de/block_log.index https://u237310-sub1.your-storagebox.de/block_log
 
 ```
 {% endtab %}
@@ -79,14 +79,14 @@ wget -P ~/home/blockchain --user=u233417-sub1 --password=xCbthClwoWSVGIt1 https:
 {% tabs %}
 {% tab title="Германия 1" %}
 ```
-wget -P ~/home/blockchain --user=u236673-sub1 --password=I9NvJH2OGn9TXhXK https://u236673-sub1.your-storagebox.de/block_log.index https://u236673-sub1.your-storagebox.de/block_log https://u236673-sub1.your-storagebox.de/shared_memory.bin
+wget -P ~/home/blockchain --user=u237308-sub1 --password=3oOk8579Ff8ceKdy https://u237308-sub1.your-storagebox.de/block_log.index https://u237308-sub1.your-storagebox.de/block_log https://u237308-sub1.your-storagebox.de/shared_memory.bin
 
 ```
 {% endtab %}
 
 {% tab title="Финляндия 1" %}
 ```
-wget -P ~/home/blockchain --user=u236672-sub1 --password=w9hDWgYLgZPwgqmt https://u236672-sub1.your-storagebox.de/block_log.index https://u236672-sub1.your-storagebox.de/block_log https://u236672-sub1.your-storagebox.de/shared_memory.bin
+wget -P ~/home/blockchain --user=u237310-sub1 --password=wTfnAGV6HTJC4D2m https://u237310-sub1.your-storagebox.de/block_log.index https://u237310-sub1.your-storagebox.de/block_log https://u237310-sub1.your-storagebox.de/shared_memory.bin
 
 ```
 {% endtab %}

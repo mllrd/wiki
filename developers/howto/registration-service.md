@@ -6,9 +6,9 @@
 
 **Браузерная версия** [golos.cf/reg/](https://golos.cf/reg/)
 
-![](https://imgp.golos.io/0x0/https://i.imgur.com/ZV6OXXu.jpg)
+![](https://i.imgur.com/ZV6OXXu.jpg)
 
-![](https://imgp.golos.io/0x0/https://i.imgur.com/2lbzERi.png)
+![](https://i.imgur.com/2lbzERi.png)
 
 💡 Вы сможете создать новый аккаунт только при помощи своего существующего аккаунта
 

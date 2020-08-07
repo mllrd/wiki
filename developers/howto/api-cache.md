@@ -26,7 +26,7 @@
 
 Вы можете использовать любую базу данных, как-то mongo, mysql, rethink и другие, для себя же я выбрал именно redis, для меня она проверенный инструмент, способный держать нагрузку во время кэширования большого объема данных.
 
-![](https://imgp.golos.io/0x0/https://redislabs.com/wp-content/uploads/2014/04/redis_proven_performance_2.png)
+![](https://redislabs.com/wp-content/uploads/2014/04/redis_proven_performance_2.png)
 
 Весь код для постоянного сохранения текущего блока в redis уместился в несколько десятков строк
 
